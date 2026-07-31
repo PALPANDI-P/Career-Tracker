@@ -15,9 +15,13 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-import yaml
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+    SKLEARN_AVAILABLE = True
+except Exception:
+    SKLEARN_AVAILABLE = False
+
 
 from schema.job import Job, ScoredJob
 
@@ -111,20 +115,28 @@ def score_jobs(
     profile_text = _build_profile_text(profile)
     job_texts = [_build_job_text(job) for job in jobs]
 
-    # First document = profile, rest = jobs
-    all_texts = [profile_text] + job_texts
+    if SKLEARN_AVAILABLE:
+        # First document = profile, rest = jobs
+        all_texts = [profile_text] + job_texts
+        vectorizer = TfidfVectorizer(
+            stop_words="english",
+            max_features=5000,
+            ngram_range=(1, 2),  # Unigrams + bigrams
+        )
+        tfidf_matrix = vectorizer.fit_transform(all_texts)
+        profile_vector = tfidf_matrix[0:1]
+        job_vectors = tfidf_matrix[1:]
+        similarities = cosine_similarity(profile_vector, job_vectors).flatten()
+    else:
+        # Fallback pure Python keyword overlap match
+        profile_words = set(profile_text.lower().split())
+        similarities = []
+        for jtext in job_texts:
+            jwords = set(jtext.lower().split())
+            intersection = profile_words.intersection(jwords)
+            sim = len(intersection) / max(len(profile_words), 1)
+            similarities.append(min(sim * 2.0, 1.0))
 
-    vectorizer = TfidfVectorizer(
-        stop_words="english",
-        max_features=5000,
-        ngram_range=(1, 2),  # Unigrams + bigrams
-    )
-
-    tfidf_matrix = vectorizer.fit_transform(all_texts)
-
-    profile_vector = tfidf_matrix[0:1]
-    job_vectors = tfidf_matrix[1:]
-    similarities = cosine_similarity(profile_vector, job_vectors).flatten()
 
     scored_jobs: list[ScoredJob] = []
 
