@@ -1,0 +1,64 @@
+<!-- Job Card Partial -->
+{% set job = notification if notification is defined else job %}
+{% set priority = job.priority|default('normal') if job is mapping else 'normal' %}
+<div class="job-card glass priority-{{ priority }}" data-job-id="{{ job.job_id|default('') }}">
+    <div class="job-card-stripe"></div>
+    <div class="job-card-body">
+        <div class="job-card-header">
+            <h3 class="job-title">{{ job.title|default('Untitled') }}</h3>
+            <span class="job-company">{{ job.company|default('Unknown') }}</span>
+        </div>
+
+        <div class="job-tags">
+            {% if job.location|default('') %}
+                <span class="job-tag location">📍 {{ job.location }}</span>
+            {% endif %}
+            {% if job.region|default('') %}
+                <span class="job-tag region">
+                    {% if job.region == 'tamil_nadu' %}🏛️ TN
+                    {% elif job.region == 'karnataka' %}🏙️ KA
+                    {% else %}🌍 Global
+                    {% endif %}
+                </span>
+            {% endif %}
+            {% if job.category|default('') and job.category != 'unknown' %}
+                <span class="job-tag category category-{{ job.category }}">
+                    {% if job.category == 'fresher' %}🎓 Fresher
+                    {% elif job.category == 'training' %}📚 Training
+                    {% elif job.category == 'internship' %}🎒 Intern
+                    {% elif job.category == 'walk_in' %}🚶 Walk-in
+                    {% elif job.category == 'campus' %}🏫 Campus
+                    {% else %}💼 {{ job.category|title }}
+                    {% endif %}
+                </span>
+            {% endif %}
+            {% if job.is_fresher_eligible %}
+                <span class="job-tag fresher">✅ Fresher OK</span>
+            {% endif %}
+        </div>
+
+        <!-- Match Score -->
+        {% set score = job.match_score|default(0) %}
+        {% if score > 0 %}
+        <div class="score-bar-container">
+            <div class="score-bar">
+                <div class="score-fill priority-{{ priority }}" style="width: {{ (score * 100)|int }}%"></div>
+            </div>
+            <span class="score-text">{{ (score * 100)|int }}%</span>
+        </div>
+        {% endif %}
+
+        {% if job.match_reason|default('') %}
+        <p class="job-reason">{{ job.match_reason }}</p>
+        {% endif %}
+
+        <div class="job-card-footer">
+            <span class="job-time">⏱️ {{ job.created_at|human_date }}</span>
+            {% if job.url|default('') %}
+            <a href="{{ job.url }}" target="_blank" rel="noopener" class="apply-btn">
+                Apply Now →
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

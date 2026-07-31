@@ -1,0 +1,52 @@
+[
+  {
+    "id": "abc123def456",
+    "text": "Senior ML Engineer",
+    "hostedUrl": "https://jobs.lever.co/testco/abc123def456",
+    "applyUrl": "https://jobs.lever.co/testco/abc123def456/apply",
+    "createdAt": 1720627200000,
+    "categories": {
+      "team": "Machine Learning",
+      "location": "Remote",
+      "department": "Engineering"
+    },
+    "descriptionPlain": "Join our recommendation team to build next-generation ML models. You'll design and deploy deep learning pipelines using PyTorch and TensorFlow.",
+    "additionalPlain": "Requirements: 5+ years ML experience, strong Python.",
+    "lists": []
+  },
+  {
+    "id": "xyz789ghi012",
+    "text": "Product Manager",
+    "hostedUrl": "https://jobs.lever.co/testco/xyz789ghi012",
+    "applyUrl": "https://jobs.lever.co/testco/xyz789ghi012/apply",
+    "createdAt": 1720713600000,
+    "categories": {
+      "team": "Product",
+      "location": "New York, NY",
+      "department": "Product"
+    },
+    "descriptionPlain": "Drive product strategy for our B2B platform.",
+    "additionalPlain": "",
+    "lists": [
+      {
+        "text": "Responsibilities",
+        "content": "<li>Define product roadmap</li><li>Work with engineering</li>"
+      }
+    ]
+  },
+  {
+    "id": "jkl345mno678",
+    "text": "Junior Software Engineer",
+    "hostedUrl": "https://jobs.lever.co/testco/jkl345mno678",
+    "applyUrl": "https://jobs.lever.co/testco/jkl345mno678/apply",
+    "createdAt": 1720800000000,
+    "categories": {
+      "team": "Platform",
+      "location": "San Francisco, CA",
+      "department": "Engineering"
+    },
+    "descriptionPlain": "Entry-level engineering role. Learn and grow with a great team.",
+    "additionalPlain": "Requirements: BS in CS, basic Python.",
+    "lists": []
+  }
+]

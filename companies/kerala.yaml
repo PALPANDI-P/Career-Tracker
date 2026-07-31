@@ -1,0 +1,132 @@
+# ─────────────────────────────────────────────────
+# Career Tracker — Kerala IT Companies
+# ─────────────────────────────────────────────────
+# IT companies in Kerala (Trivandrum Technopark,
+# Kochi Infopark, Calicut Cyberpark).
+# ─────────────────────────────────────────────────
+
+companies:
+
+  # ══════════════════════════════════════════════════
+  #  Technopark Trivandrum & Infopark Kochi IT Companies
+  # ══════════════════════════════════════════════════
+
+  - name: "IBS Software"
+    careers_url: "https://www.ibsplc.com/careers"
+    fresher_careers_url: "https://www.ibsplc.com/careers/early-careers"
+    fresher_role_types: ["Software Engineer Trainee", "Trainee Systems Engineer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "travel-tech", "kerala", "trivandrum", "kochi"]
+
+  - name: "UST Kerala"
+    careers_url: "https://www.ust.com/en/careers"
+    fresher_careers_url: "https://www.ust.com/en/careers/campus-hiring"
+    fresher_role_types: ["Associate Software Engineer", "Graduate Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "kerala", "trivandrum", "kochi"]
+
+  - name: "SunTec Business Solutions"
+    careers_url: "https://www.suntecgroup.com/careers/"
+    fresher_careers_url: "https://www.suntecgroup.com/careers/freshers-hiring/"
+    fresher_role_types: ["Software Engineer Trainee", "Python/Java Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "fintech", "kerala", "trivandrum"]
+
+  - name: "Quest Global Kerala"
+    careers_url: "https://www.quest-global.com/careers/"
+    fresher_careers_url: "https://www.quest-global.com/careers/early-careers/"
+    fresher_role_types: ["Trainee Engineer", "Trainee Software Developer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["engineering-services", "kerala", "trivandrum"]
+
+  - name: "Tata Elxsi Kochi"
+    careers_url: "https://www.tataelxsi.com/careers"
+    fresher_careers_url: "https://www.tataelxsi.com/careers/campus-hiring"
+    fresher_role_types: ["Engineer Trainee — Software", "AI/ML Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "ai-embedded", "kerala", "kochi"]
+
+  - name: "NEST Digital"
+    careers_url: "https://nestdigital.com/careers/"
+    fresher_careers_url: "https://nestdigital.com/careers/#freshers"
+    fresher_role_types: ["Junior Software Developer", "Trainee Engineer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["services", "kerala", "kochi", "trivandrum"]
+
+  - name: "Navigant India (Guidehouse)"
+    careers_url: "https://guidehouse.com/careers"
+    fresher_careers_url: "https://guidehouse.com/careers/students-and-graduates"
+    fresher_role_types: ["Associate Consultant Trainee", "Software Engineer (0-1 Yr)"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "kerala", "trivandrum"]
+
+  - name: "Experion Technologies"
+    careers_url: "https://www.experionglobal.com/careers/"
+    fresher_careers_url: "https://www.experionglobal.com/careers/#freshers"
+    fresher_role_types: ["Software Engineer Trainee", "Full Stack Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-services", "kerala", "trivandrum", "kochi"]
+
+  - name: "InApp Information Technologies"
+    careers_url: "https://inapp.com/careers/"
+    fresher_careers_url: "https://inapp.com/careers/#fresher-jobs"
+    fresher_role_types: ["Junior Software Engineer", "Python Developer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["services", "kerala", "trivandrum"]
+
+  - name: "AOT Technologies"
+    careers_url: "https://aottechnologies.com/careers/"
+    fresher_careers_url: "https://aottechnologies.com/careers/#openings"
+    fresher_role_types: ["Associate Software Developer", "React/Node Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Kerala"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["services", "kerala", "trivandrum"]

@@ -1,0 +1,55 @@
+{
+  "jobs": [
+    {
+      "id": 4567890,
+      "title": "Software Engineer, Backend",
+      "absolute_url": "https://boards.greenhouse.io/testco/jobs/4567890",
+      "updated_at": "2025-07-15T10:30:00-04:00",
+      "location": {
+        "name": "Austin, TX"
+      },
+      "departments": [
+        {
+          "id": 100,
+          "name": "Engineering"
+        }
+      ],
+      "content": "<p>We're looking for a backend engineer to help build and scale our platform.</p><ul><li>Python or Go experience</li><li>Distributed systems knowledge</li></ul>"
+    },
+    {
+      "id": 4567891,
+      "title": "Frontend Engineer",
+      "absolute_url": "https://boards.greenhouse.io/testco/jobs/4567891",
+      "updated_at": "2025-07-16T09:00:00-04:00",
+      "location": {
+        "name": "Remote"
+      },
+      "departments": [
+        {
+          "id": 100,
+          "name": "Engineering"
+        }
+      ],
+      "content": "<p>Join our frontend team building React applications.</p><ul><li>React/TypeScript</li><li>CSS expertise</li></ul>"
+    },
+    {
+      "id": 4567892,
+      "title": "Senior Data Scientist",
+      "absolute_url": "https://boards.greenhouse.io/testco/jobs/4567892",
+      "updated_at": "2025-07-17T14:00:00-04:00",
+      "location": {
+        "name": "San Francisco, CA"
+      },
+      "departments": [
+        {
+          "id": 200,
+          "name": "Data Science"
+        }
+      ],
+      "content": "<p>Lead ML initiatives.</p><p>Requirements: 5+ years experience, PhD preferred.</p>"
+    }
+  ],
+  "meta": {
+    "total": 3
+  }
+}

@@ -1,0 +1,582 @@
+# Pan-India Genuine IT Software Companies (Telangana, Maharashtra, Delhi-NCR, Gujarat, West Bengal)
+# 100% Direct IT Software Employers — 0 Coaching Institutes or Placement Consultancies
+
+companies:
+  # ── Telangana (Hyderabad Tech Hub) ────────────────
+  - name: Tech Mahindra
+    careers_url: https://www.techmahindra.com/en-in/careers/
+    fresher_careers_url: https://www.techmahindra.com/en-in/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, tier1, services, telangana, hyderabad]
+    enabled: true
+
+  - name: Cyient
+    careers_url: https://www.cyient.com/careers
+    fresher_careers_url: https://www.cyient.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, product_engineering, telangana, hyderabad]
+    enabled: true
+
+  - name: ValueLabs
+    careers_url: https://www.valuelabs.com/careers/
+    fresher_careers_url: https://www.valuelabs.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, services, telangana, hyderabad]
+    enabled: true
+
+  - name: Darwinbox
+    careers_url: https://darwinbox.com/careers.php
+    fresher_careers_url: https://darwinbox.com/careers.php
+    ats_type: custom
+    tags: [fresher_recruiter, startup, product, unicorn, telangana, hyderabad]
+    enabled: true
+
+  - name: HighRadius
+    careers_url: https://www.highradius.com/careers/
+    fresher_careers_url: https://www.highradius.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, fintech_saas, telangana, hyderabad]
+    enabled: true
+
+  - name: Zenoti
+    careers_url: https://www.zenoti.com/careers
+    fresher_careers_url: https://www.zenoti.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, product, unicorn, telangana, hyderabad]
+    enabled: true
+
+  - name: Keka HR
+    careers_url: https://www.keka.com/careers
+    fresher_careers_url: https://www.keka.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, product_saas, telangana, hyderabad]
+    enabled: true
+
+  - name: Progress Software
+    careers_url: https://www.progress.com/company/careers
+    fresher_careers_url: https://www.progress.com/company/careers
+    ats_type: custom
+    tags: [fresher_recruiter, product, telangana, hyderabad]
+    enabled: true
+
+  - name: Persistent Systems (Hyderabad)
+    careers_url: https://www.persistent.com/careers/
+    fresher_careers_url: https://www.persistent.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, software_engineering, telangana, hyderabad]
+    enabled: true
+
+  - name: ZenQ
+    careers_url: https://www.zenq.com/careers/
+    fresher_careers_url: https://www.zenq.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, testing_dev, telangana, hyderabad]
+    enabled: true
+
+  - name: Operations (Hyderabad)
+    careers_url: https://www.opentext.com/about/careers
+    fresher_careers_url: https://www.opentext.com/about/careers
+    ats_type: custom
+    tags: [fresher_recruiter, product, telangana, hyderabad]
+    enabled: true
+
+  - name: CallHealth
+    careers_url: https://www.callhealth.com/careers
+    fresher_careers_url: https://www.callhealth.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, healthtech, telangana, hyderabad]
+    enabled: true
+
+  - name: Virtusa (Hyderabad)
+    careers_url: https://www.virtusa.com/careers
+    fresher_careers_url: https://www.virtusa.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, services, telangana, hyderabad]
+    enabled: true
+
+  - name: Commvault (Hyderabad)
+    careers_url: https://www.commvault.com/careers
+    fresher_careers_url: https://www.commvault.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, product, data, telangana, hyderabad]
+    enabled: true
+
+  - name: CtrlS Datacenters
+    careers_url: https://www.ctrls.in/careers.html
+    fresher_careers_url: https://www.ctrls.in/careers.html
+    ats_type: custom
+    tags: [fresher_recruiter, cloud_infrastructure, telangana, hyderabad]
+    enabled: true
+
+  # ── Maharashtra (Pune & Mumbai Tech Hubs) ─────────
+  - name: Persistent Systems
+    careers_url: https://www.persistent.com/careers/
+    fresher_careers_url: https://www.persistent.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, software_engineering, maharashtra, pune]
+    enabled: true
+
+  - name: LTIMindtree (Pune/Mumbai)
+    careers_url: https://www.ltimindtree.com/careers/
+    fresher_careers_url: https://www.ltimindtree.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, tier1, services, maharashtra, mumbai]
+    enabled: true
+
+  - name: KPIT Technologies
+    careers_url: https://www.kpit.com/careers/
+    fresher_careers_url: https://www.kpit.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, automotive_software, maharashtra, pune]
+    enabled: true
+
+  - name: Coforge (Pune/Mumbai)
+    careers_url: https://www.coforge.com/careers
+    fresher_careers_url: https://www.coforge.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, services, maharashtra, mumbai]
+    enabled: true
+
+  - name: Zensar Technologies
+    careers_url: https://www.zensar.com/careers
+    fresher_careers_url: https://www.zensar.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, services, maharashtra, pune]
+    enabled: true
+
+  - name: Synechron
+    careers_url: https://www.synechron.com/careers
+    fresher_careers_url: https://www.synechron.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, fintech_consulting, maharashtra, pune]
+    enabled: true
+
+  - name: Tata Elxsi (Pune/Mumbai)
+    careers_url: https://www.tataelxsi.com/careers
+    fresher_careers_url: https://www.tataelxsi.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, product_design, maharashtra, pune]
+    enabled: true
+
+  - name: Quick Heal Technologies
+    careers_url: https://www.quickheal.co.in/careers
+    fresher_careers_url: https://www.quickheal.co.in/careers
+    ats_type: custom
+    tags: [fresher_recruiter, product, cybersecurity, maharashtra, pune]
+    enabled: true
+
+  - name: PubMatic
+    careers_url: https://pubmatic.com/careers/
+    fresher_careers_url: https://pubmatic.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, product, adtech, maharashtra, pune]
+    enabled: true
+
+  - name: Icertis
+    careers_url: https://www.icertis.com/company/careers/
+    fresher_careers_url: https://www.icertis.com/company/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, product, unicorn, maharashtra, pune]
+    enabled: true
+
+  - name: Druva
+    careers_url: https://www.druva.com/about/careers/
+    fresher_careers_url: https://www.druva.com/about/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, cloud_saas, unicorn, maharashtra, pune]
+    enabled: true
+
+  - name: Netcore Cloud
+    careers_url: https://netcorecloud.com/careers/
+    fresher_careers_url: https://netcorecloud.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, martech, maharashtra, mumbai]
+    enabled: true
+
+  - name: Rebel Foods
+    careers_url: https://www.rebelfoods.com/careers
+    fresher_careers_url: https://www.rebelfoods.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, tech_platform, maharashtra, mumbai]
+    enabled: true
+
+  - name: Reliance Jio Tech
+    careers_url: https://careers.jio.com/
+    fresher_careers_url: https://careers.jio.com/
+    ats_type: custom
+    tags: [fresher_recruiter, telecom_tech, maharashtra, mumbai]
+    enabled: true
+
+  - name: Tata Digital
+    careers_url: https://www.tatadigital.com/careers
+    fresher_careers_url: https://www.tatadigital.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, product, e-commerce, maharashtra, mumbai]
+    enabled: true
+
+  # ── Delhi-NCR (Gurugram & Noida Tech Hubs) ────────
+  - name: Policybazaar
+    careers_url: https://www.policybazaar.com/careers/
+    fresher_careers_url: https://www.policybazaar.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, fintech, unicorn, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: Pine Labs
+    careers_url: https://www.pinelabs.com/careers
+    fresher_careers_url: https://www.pinelabs.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, fintech, unicorn, delhi_ncr, noida]
+    enabled: true
+
+  - name: Delhivery
+    careers_url: https://www.delhivery.com/careers/
+    fresher_careers_url: https://www.delhivery.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, logistech, unicorn, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: Urban Company
+    careers_url: https://www.urbancompany.com/careers
+    fresher_careers_url: https://www.urbancompany.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, product, unicorn, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: Paytm (One97 Communications)
+    careers_url: https://paytm.com/careers
+    fresher_careers_url: https://paytm.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, fintech, tech_platform, delhi_ncr, noida]
+    enabled: true
+
+  - name: MakeMyTrip
+    careers_url: https://careers.makemytrip.com/
+    fresher_careers_url: https://careers.makemytrip.com/
+    ats_type: custom
+    tags: [fresher_recruiter, product, traveltech, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: Cars24
+    careers_url: https://www.cars24.com/careers/
+    fresher_careers_url: https://www.cars24.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, product, unicorn, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: Pristyn Care
+    careers_url: https://www.pristyncare.com/careers/
+    fresher_careers_url: https://www.pristyncare.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, healthtech, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: OFBusiness
+    careers_url: https://www.ofbusiness.com/careers
+    fresher_careers_url: https://www.ofbusiness.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, b2b_fintech, unicorn, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: HCLTech (Noida HQ)
+    careers_url: https://www.hcltech.com/careers
+    fresher_careers_url: https://www.hcltech.com/careers/freshers
+    ats_type: custom
+    tags: [fresher_recruiter, tier1, services, delhi_ncr, noida]
+    enabled: true
+
+  - name: IndiaMART
+    careers_url: https://corporate.indiamart.com/careers/
+    fresher_careers_url: https://corporate.indiamart.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, product, e-commerce, delhi_ncr, noida]
+    enabled: true
+
+  - name: Nagarro
+    careers_url: https://www.nagarro.com/en/careers
+    fresher_careers_url: https://www.nagarro.com/en/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, software_services, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: Newgen Software
+    careers_url: https://newgensoft.com/company/careers/
+    fresher_careers_url: https://newgensoft.com/company/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, product, bpm_saas, delhi_ncr, noida]
+    enabled: true
+
+  - name: RateGain
+    careers_url: https://rategain.com/careers/
+    fresher_careers_url: https://rategain.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, product, travel_saas, delhi_ncr, noida]
+    enabled: true
+
+  - name: Snapdeal
+    careers_url: https://snapdeal.careers/
+    fresher_careers_url: https://snapdeal.careers/
+    ats_type: custom
+    tags: [fresher_recruiter, e-commerce, delhi_ncr, gurugram]
+    enabled: true
+
+  # ── Gujarat & West Bengal (Ahmedabad & Kolkata Hubs) ──
+  - name: InfoStretch (Aperture)
+    careers_url: https://www.infostretch.com/careers/
+    fresher_careers_url: https://www.infostretch.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, digital_engineering, gujarat, ahmedabad]
+    enabled: true
+
+  - name: TatvaSoft
+    careers_url: https://www.tatvasoft.com/careers/
+    fresher_careers_url: https://www.tatvasoft.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, custom_software, gujarat, ahmedabad]
+    enabled: true
+
+  - name: Radixweb
+    careers_url: https://radixweb.com/careers
+    fresher_careers_url: https://radixweb.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, web_dev, gujarat, ahmedabad]
+    enabled: true
+
+  - name: Hidden Brains
+    careers_url: https://www.hiddenbrains.com/careers.html
+    fresher_careers_url: https://www.hiddenbrains.com/careers.html
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, mobile_web, gujarat, ahmedabad]
+    enabled: true
+
+  - name: RS Software (Kolkata)
+    careers_url: https://www.rssoftware.com/careers/
+    fresher_careers_url: https://www.rssoftware.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, payments_fintech, west_bengal, kolkata]
+    enabled: true
+
+  - name: Data Core Systems
+    careers_url: https://datacoresystems.com/careers/
+    fresher_careers_url: https://datacoresystems.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, enterprise_software, west_bengal, kolkata]
+    enabled: true
+
+  - name: TCG Digital
+    careers_url: https://www.tcgdigital.com/careers/
+    fresher_careers_url: https://www.tcgdigital.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, analytics_ai, west_bengal, kolkata]
+    enabled: true
+
+  # ── Additional Pan-India Genuine Tech Software Employers ─────────
+  - name: HighRadius (Telangana)
+    careers_url: https://www.highradius.com/careers/
+    fresher_careers_url: https://www.highradius.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, fintech_saas, telangana, hyderabad]
+    enabled: true
+
+  - name: Zenoti (Telangana)
+    careers_url: https://www.zenoti.com/careers
+    fresher_careers_url: https://www.zenoti.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, product, unicorn, telangana, hyderabad]
+    enabled: true
+
+  - name: BrightChamps
+    careers_url: https://brightchamps.com/careers
+    fresher_careers_url: https://brightchamps.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, edtech_platform, telangana, hyderabad]
+    enabled: true
+
+  - name: SoftSuave Technologies
+    careers_url: https://www.softsuave.com/careers
+    fresher_careers_url: https://www.softsuave.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, web_mobile_dev, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Contus Tech
+    careers_url: https://www.contus.com/careers.php
+    fresher_careers_url: https://www.contus.com/careers.php
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, saas_video, tamil_nadu, chennai]
+    enabled: true
+
+  - name: MacAppstudio
+    careers_url: https://macappstudio.com/careers/
+    fresher_careers_url: https://macappstudio.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, mobile_app_dev, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Guvi Tech
+    careers_url: https://www.guvi.in/careers
+    fresher_careers_url: https://www.guvi.in/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, edtech_software, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Skcript
+    careers_url: https://www.skcript.com/careers
+    fresher_careers_url: https://www.skcript.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, ai_consulting, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Agilysys (India)
+    careers_url: https://www.agilysys.com/en/company/careers/
+    fresher_careers_url: https://www.agilysys.com/en/company/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, product, hospitality_software, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Ideas2IT Technologies
+    careers_url: https://www.ideas2it.com/careers/
+    fresher_careers_url: https://www.ideas2it.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, product_engineering, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Codingmart Technologies
+    careers_url: https://www.codingmart.com/careers
+    fresher_careers_url: https://www.codingmart.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, product_engineering, karnataka, bengaluru]
+    enabled: true
+
+  - name: Hasura (Bengaluru)
+    careers_url: https://hasura.io/careers/
+    fresher_careers_url: https://hasura.io/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, developer_tools, karnataka, bengaluru]
+    enabled: true
+
+  - name: Porter (Bengaluru)
+    careers_url: https://porter.in/careers
+    fresher_careers_url: https://porter.in/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, logistech, karnataka, bengaluru]
+    enabled: true
+
+  - name: Dukaan (Bengaluru)
+    careers_url: https://mydukaan.io/careers
+    fresher_careers_url: https://mydukaan.io/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, e-commerce_saas, karnataka, bengaluru]
+    enabled: true
+
+  - name: Multiwoven
+    careers_url: https://www.multiwoven.com/careers
+    fresher_careers_url: https://www.multiwoven.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, open_source_data, karnataka, bengaluru]
+    enabled: true
+
+  - name: Appknox
+    careers_url: https://www.appknox.com/careers
+    fresher_careers_url: https://www.appknox.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, mobile_security, karnataka, bengaluru]
+    enabled: true
+
+  - name: Sedin Technologies
+    careers_url: https://sedin.technologies/careers
+    fresher_careers_url: https://sedin.technologies/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, enterprise_cloud, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Agile Cyber Solutions
+    careers_url: https://www.agilecyber.com/careers
+    fresher_careers_url: https://www.agilecyber.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, startup, web_engineering, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Softsquare
+    careers_url: https://www.softsquare.biz/careers
+    fresher_careers_url: https://www.softsquare.biz/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, salesforce_dev, tamil_nadu, chennai]
+    enabled: true
+
+  - name: VVDN Technologies (Gurugram)
+    careers_url: https://www.vvdntech.com/careers
+    fresher_careers_url: https://www.vvdntech.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, embedded_software, delhi_ncr, gurugram]
+    enabled: true
+
+  - name: NeST Digital (Kochi)
+    careers_url: https://nestdigital.com/careers/
+    fresher_careers_url: https://nestdigital.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, software_engineering, kerala, kochi]
+    enabled: true
+
+  - name: AOT Technologies (Trivandrum)
+    careers_url: https://www.aottechnologies.com/careers/
+    fresher_careers_url: https://www.aottechnologies.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, integration_software, kerala, trivandrum]
+    enabled: true
+
+  - name: InApp Information Technologies
+    careers_url: https://inapp.com/careers/
+    fresher_careers_url: https://inapp.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, web_app_dev, kerala, trivandrum]
+    enabled: true
+
+  - name: Experion Technologies (Kochi)
+    careers_url: https://www.experionglobal.com/careers/
+    fresher_careers_url: https://www.experionglobal.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, product_engineering, kerala, kochi]
+    enabled: true
+
+  - name: SunTec Business Solutions
+    careers_url: https://www.suntecgroup.com/careers/
+    fresher_careers_url: https://www.suntecgroup.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, billing_fintech, kerala, trivandrum]
+    enabled: true
+
+  - name: IBS Software (Kochi)
+    careers_url: https://www.ibsplc.com/careers
+    fresher_careers_url: https://www.ibsplc.com/careers
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, travel_saas, kerala, kochi]
+    enabled: true
+
+  - name: Kissflow (Chennai)
+    careers_url: https://kissflow.com/careers/
+    fresher_careers_url: https://kissflow.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, lowcode_saas, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Chargebee (Chennai)
+    careers_url: https://www.chargebee.com/careers/
+    fresher_careers_url: https://www.chargebee.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, fintech_saas, tamil_nadu, chennai]
+    enabled: true
+
+  - name: Kovai.co (Coimbatore)
+    careers_url: https://www.kovai.co/careers/
+    fresher_careers_url: https://www.kovai.co/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, mid-level, enterprise_saas, tamil_nadu, coimbatore]
+    enabled: true
+
+  - name: SurveySparrow (Chennai)
+    careers_url: https://surveysparrow.com/careers/
+    fresher_careers_url: https://surveysparrow.com/careers/
+    ats_type: custom
+    tags: [fresher_recruiter, startup, saas_platform, tamil_nadu, chennai]
+    enabled: true

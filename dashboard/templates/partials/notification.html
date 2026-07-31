@@ -1,0 +1,65 @@
+<!-- Notification Card Partial -->
+{% set notif = notification if notification is defined else notif %}
+{% set priority = notif.priority|default('normal') if notif is mapping else notif.get('priority', 'normal') %}
+<div class="notification-card priority-{{ priority }}" data-notif-id="{{ notif.id|default('') }}">
+    <div class="notif-priority-stripe"></div>
+    <div class="notif-content">
+        <div class="notif-header">
+            <div class="notif-title-row">
+                <h3 class="notif-title">{{ notif.title|default('Untitled') }}</h3>
+                <span class="notif-badge category-{{ notif.category|default('unknown') }}">
+                    {% if notif.category|default('') == 'fresher' %}🎓 Fresher
+                    {% elif notif.category|default('') == 'training' %}📚 Training
+                    {% elif notif.category|default('') == 'internship' %}🎒 Intern
+                    {% elif notif.category|default('') == 'walk_in' %}🚶 Walk-in
+                    {% elif notif.category|default('') == 'campus' %}🏫 Campus
+                    {% elif notif.category|default('') == 'junior' %}💼 Junior
+                    {% else %}📋 Job
+                    {% endif %}
+                </span>
+            </div>
+            <span class="notif-company">{{ notif.company|default('Unknown') }}</span>
+        </div>
+
+        <div class="notif-meta">
+            {% if notif.location|default('') %}
+                <span class="meta-item">📍 {{ notif.location }}</span>
+            {% endif %}
+            {% if notif.region|default('') %}
+                <span class="meta-item region-tag">
+                    {% if notif.region == 'tamil_nadu' %}🏛️ Tamil Nadu
+                    {% elif notif.region == 'karnataka' %}🏙️ Karnataka
+                    {% else %}🌍 Global
+                    {% endif %}
+                </span>
+            {% endif %}
+            {% if notif.is_fresher_eligible %}
+                <span class="meta-item fresher-tag">✅ Fresher Eligible</span>
+            {% endif %}
+        </div>
+
+        <!-- Match Score Bar -->
+        {% set score = notif.match_score|default(0) %}
+        {% if score > 0 %}
+        <div class="score-bar-container">
+            <div class="score-bar">
+                <div class="score-fill priority-{{ priority }}" style="width: {{ (score * 100)|int }}%"></div>
+            </div>
+            <span class="score-text">{{ (score * 100)|int }}% match</span>
+        </div>
+        {% endif %}
+
+        {% if notif.match_reason|default('') %}
+        <p class="notif-reason">{{ notif.match_reason }}</p>
+        {% endif %}
+
+        <div class="notif-footer">
+            <span class="notif-time">⏱️ {{ notif.created_at|human_date }}</span>
+            {% if notif.url|default('') %}
+            <a href="{{ notif.url }}" target="_blank" rel="noopener" class="apply-btn">
+                Apply Now →
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

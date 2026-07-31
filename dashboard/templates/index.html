@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<!-- Stats Cards Row -->
+<div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+    <div class="stat-card glass" id="stat-genuine-companies">
+        <div class="stat-icon">🏢</div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.total_genuine_companies|default(116) }}</span>
+            <span class="stat-label">Genuine Tracked Companies</span>
+        </div>
+    </div>
+    <div class="stat-card glass" id="stat-total-jobs">
+        <div class="stat-icon">📋</div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.total_jobs_tracked }}</span>
+            <span class="stat-label">Total Jobs Tracked</span>
+        </div>
+    </div>
+    <div class="stat-card glass" id="stat-notifications">
+        <div class="stat-icon">🔔</div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.total_notifications }}</span>
+            <span class="stat-label">Notifications</span>
+        </div>
+    </div>
+    <div class="stat-card glass highlight-green" id="stat-hot">
+        <div class="stat-icon">🔥</div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.hot_matches }}</span>
+            <span class="stat-label">Hot Matches</span>
+        </div>
+    </div>
+    <div class="stat-card glass" id="stat-unread">
+        <div class="stat-icon">📬</div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.unread_count }}</span>
+            <span class="stat-label">Unread</span>
+        </div>
+    </div>
+</div>
+
+<!-- Last Run Info -->
+{% if stats.last_run %}
+<div class="last-run-bar glass">
+    <span class="last-run-icon">⏱️</span>
+    <span>Last pipeline run: <strong>{{ stats.last_run.timestamp }}</strong> —
+        {{ stats.last_run.companies }} companies scanned,
+        {{ stats.last_run.jobs_found }} jobs found,
+        <span class="highlight-text">{{ stats.last_run.jobs_new }} new</span>
+    </span>
+</div>
+{% endif %}
+
+<!-- Main Content Grid -->
+<div class="dashboard-grid">
+    <!-- Recent Notifications (Left - larger) -->
+    <section class="dashboard-section glass" id="recent-notifications-section">
+        <div class="section-header">
+            <h2>🔔 Recent Notifications</h2>
+            <a href="/notifications" class="see-all-link">See All →</a>
+        </div>
+        <div class="notification-feed" id="notification-feed">
+            {% if notifications %}
+                {% for notif in notifications %}
+                    {% include "partials/notification.html" with context %}
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <span class="empty-icon">📭</span>
+                    <p>No notifications yet. Run the pipeline to start tracking jobs!</p>
+                    <code>career-tracker run</code>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Quick Links (Right - smaller) -->
+    <section class="dashboard-section glass" id="quick-links-section">
+        <div class="section-header">
+            <h2>⚡ Quick Links</h2>
+        </div>
+        <div class="quick-links">
+            <a href="/companies?region=tamil_nadu" class="quick-link-card">
+                <span class="ql-icon">🏛️</span>
+                <span class="ql-label">Tamil Nadu</span>
+            </a>
+            <a href="/companies?region=karnataka" class="quick-link-card">
+                <span class="ql-icon">🏙️</span>
+                <span class="ql-label">Karnataka</span>
+            </a>
+            <a href="/companies?region=kerala" class="quick-link-card">
+                <span class="ql-icon">🌴</span>
+                <span class="ql-label">Kerala</span>
+            </a>
+            <a href="/jobs?category=fresher" class="quick-link-card">
+                <span class="ql-icon">🎓</span>
+                <span class="ql-label">Fresher Jobs</span>
+            </a>
+            <a href="/jobs?category=training" class="quick-link-card">
+                <span class="ql-icon">📚</span>
+                <span class="ql-label">Training Roles</span>
+            </a>
+            <a href="/companies?region=global" class="quick-link-card">
+                <span class="ql-icon">🌍</span>
+                <span class="ql-label">Global Companies</span>
+            </a>
+            <a href="/companies?category=startup" class="quick-link-card">
+                <span class="ql-icon">🚀</span>
+                <span class="ql-label">Startups</span>
+            </a>
+        </div>
+
+        <!-- Region Distribution -->
+        <div class="section-header" style="margin-top: 1.5rem;">
+            <h2>📍 Region Focus</h2>
+        </div>
+        <div class="region-cards">
+            <div class="region-card tn">
+                <span class="region-name">Tamil Nadu</span>
+                <span class="region-cities">Chennai, Coimbatore, Madurai</span>
+            </div>
+            <div class="region-card ka">
+                <span class="region-name">Karnataka</span>
+                <span class="region-cities">Bangalore, Mysore, Hubli</span>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

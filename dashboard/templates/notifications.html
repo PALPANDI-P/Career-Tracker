@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Notifications{% endblock %}
+{% block page_title %}Notification Center{% endblock %}
+
+{% block content %}
+<!-- Priority Legend -->
+<div class="priority-legend glass">
+    <span class="legend-item">
+        <span class="priority-dot urgent"></span> Urgent (Walk-in)
+    </span>
+    <span class="legend-item">
+        <span class="priority-dot hot"></span> Hot Match (80%+ & Fresher)
+    </span>
+    <span class="legend-item">
+        <span class="priority-dot good"></span> Good Match (65%+)
+    </span>
+    <span class="legend-item">
+        <span class="priority-dot worth-checking"></span> Worth Checking (55-65%)
+    </span>
+    <span class="legend-item">
+        <span class="priority-dot new"></span> New Posting
+    </span>
+</div>
+
+<!-- Notification Feed -->
+<div class="notification-feed full-page" id="notification-feed-full">
+    {% if notifications %}
+        {% for notif in notifications %}
+            {% set notification = notif %}
+            {% include "partials/notification.html" %}
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">
+            <span class="empty-icon">📭</span>
+            <p>No notifications yet.</p>
+            <p class="empty-hint">Notifications will appear here when the pipeline finds matching jobs.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,552 @@
+# ─────────────────────────────────────────────────
+# Career Tracker — Karnataka IT Companies
+# ─────────────────────────────────────────────────
+# 55+ IT companies with offices in Karnataka
+# (Bangalore, Mysore, Hubli, Mangalore).
+# Focused on companies that actively hire freshers,
+# juniors, and trainees.
+# ─────────────────────────────────────────────────
+
+companies:
+
+  # ══════════════════════════════════════════════════
+  #  Big Tech India Offices — Karnataka
+  # ══════════════════════════════════════════════════
+
+  - name: "Google Bangalore"
+    careers_url: "https://www.google.com/about/careers/applications/jobs/results"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "karnataka", "bangalore"]
+
+  - name: "Microsoft IDC"
+    careers_url: "https://careers.microsoft.com/v2/global/en/search"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "karnataka", "bangalore"]
+
+  - name: "Amazon Bangalore"
+    careers_url: "https://www.amazon.jobs/en/locations/bangalore-india"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "karnataka", "bangalore"]
+
+  - name: "Oracle Bangalore"
+    careers_url: "https://www.oracle.com/in/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "enterprise", "karnataka", "bangalore"]
+
+  - name: "SAP Labs India"
+    careers_url: "https://jobs.sap.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "enterprise", "karnataka", "bangalore"]
+
+  - name: "Adobe Bangalore"
+    careers_url: "https://careers.adobe.com/us/en/search-results"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "karnataka", "bangalore"]
+
+  - name: "Cisco Bangalore"
+    careers_url: "https://jobs.cisco.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "networking", "karnataka", "bangalore"]
+
+  - name: "VMware Bangalore"
+    careers_url: "https://careers.vmware.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "cloud", "karnataka", "bangalore"]
+
+  - name: "IBM Bangalore"
+    careers_url: "https://www.ibm.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "enterprise", "karnataka", "bangalore"]
+
+  - name: "Dell Technologies"
+    careers_url: "https://jobs.dell.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "enterprise", "karnataka", "bangalore"]
+
+  # ══════════════════════════════════════════════════
+  #  Indian Unicorns / Product Companies — Karnataka
+  # ══════════════════════════════════════════════════
+
+  - name: "Flipkart"
+    careers_url: "https://www.flipkartcareers.com"
+    fresher_careers_url: "https://www.flipkartcareers.com/#!/campus-connect"
+    fresher_role_types: ["SDE-1 (Campus/Off-Campus)", "Software Engineer Trainee", "Data Analyst Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "ecommerce", "karnataka", "bangalore"]
+
+  - name: "Swiggy"
+    careers_url: "https://careers.swiggy.com"
+    fresher_careers_url: "https://careers.swiggy.com/#open-roles"
+    fresher_role_types: ["Associate Software Engineer", "Frontend Developer Trainee", "QA Automation Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "foodtech", "karnataka", "bangalore"]
+
+  - name: "PhonePe"
+    careers_url: "https://www.phonepe.com/careers"
+    fresher_careers_url: "https://www.phonepe.com/careers/#university-hiring"
+    fresher_role_types: ["Associate Software Engineer", "University Graduate Developer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "fintech", "karnataka", "bangalore"]
+
+  - name: "CRED"
+    careers_url: "https://careers.cred.club"
+    fresher_careers_url: "https://careers.cred.club/#openings"
+    fresher_role_types: ["Frontend Developer (0-1 Yr)", "Backend Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "fintech", "karnataka", "bangalore"]
+
+  - name: "Meesho"
+    careers_url: "https://careers.meesho.com"
+    fresher_careers_url: "https://careers.meesho.com/#campus"
+    fresher_role_types: ["SDE-1 Fresher", "Associate Data Analyst"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "ecommerce", "karnataka", "bangalore"]
+
+  - name: "Zerodha"
+    careers_url: "https://zerodha.com/careers"
+    fresher_careers_url: "https://zerodha.com/careers"
+    fresher_role_types: ["Python Developer (Freshers)", "Full Stack Developer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "fintech", "karnataka", "bangalore"]
+
+  - name: "Razorpay"
+    careers_url: "https://razorpay.com/careers"
+    fresher_careers_url: "https://razorpay.com/careers/#freshers"
+    fresher_role_types: ["Software Engineer — Platform (0-2 Yrs)", "Associate Backend Developer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "fintech", "karnataka", "bangalore"]
+
+  - name: "Postman"
+    careers_url: "https://www.postman.com/company/careers"
+    fresher_careers_url: "https://www.postman.com/company/careers/#early-career"
+    fresher_role_types: ["Associate Software Engineer", "Quality Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "devtools", "karnataka", "bangalore"]
+
+  - name: "BrowserStack"
+    careers_url: "https://www.browserstack.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "devtools", "karnataka", "bangalore"]
+
+  # ══════════════════════════════════════════════════
+  #  Startups — Karnataka
+  # ══════════════════════════════════════════════════
+
+  - name: "Slice"
+    careers_url: "https://www.sliceit.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "fintech", "karnataka", "bangalore"]
+
+  - name: "Jupiter"
+    careers_url: "https://jupiter.money/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "fintech", "karnataka", "bangalore"]
+
+  - name: "Groww"
+    careers_url: "https://groww.in/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "fintech", "karnataka", "bangalore"]
+
+  - name: "Navi Technologies"
+    careers_url: "https://navi.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "fintech", "karnataka", "bangalore"]
+
+  - name: "Ather Energy"
+    careers_url: "https://www.atherenergy.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "ev", "karnataka", "bangalore"]
+
+  - name: "Licious"
+    careers_url: "https://www.licious.in/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "d2c", "karnataka", "bangalore"]
+
+  - name: "Simplilearn"
+    careers_url: "https://www.simplilearn.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "edtech", "karnataka", "bangalore"]
+
+  - name: "Unacademy"
+    careers_url: "https://unacademy.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "edtech", "karnataka", "bangalore"]
+
+  # ══════════════════════════════════════════════════
+  #  Enterprise / Global Companies — Karnataka
+  # ══════════════════════════════════════════════════
+
+  - name: "Siemens Technology"
+    careers_url: "https://jobs.siemens.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["enterprise", "engineering", "karnataka", "bangalore"]
+
+  - name: "Robert Bosch"
+    careers_url: "https://www.bosch.in/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["enterprise", "automotive", "karnataka", "bangalore"]
+
+  - name: "Continental"
+    careers_url: "https://www.continental.com/en/career"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["enterprise", "automotive", "karnataka", "bangalore"]
+
+  - name: "ThoughtWorks"
+    careers_url: "https://www.thoughtworks.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "karnataka", "bangalore"]
+
+  - name: "Publicis Sapient"
+    careers_url: "https://www.publicissapient.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "digital", "karnataka", "bangalore"]
+
+  # ══════════════════════════════════════════════════
+  #  MNC IT Services — Karnataka
+  # ══════════════════════════════════════════════════
+
+  - name: "Infosys HQ Bangalore"
+    careers_url: "https://www.infosys.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "karnataka", "bangalore"]
+
+  - name: "Wipro HQ Bangalore"
+    careers_url: "https://careers.wipro.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "karnataka", "bangalore"]
+
+  - name: "TCS Bangalore"
+    careers_url: "https://www.tcs.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "karnataka", "bangalore"]
+
+  - name: "Mindtree"
+    careers_url: "https://www.ltimindtree.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "karnataka", "bangalore"]
+
+  - name: "Accenture Bangalore"
+    careers_url: "https://www.accenture.com/in-en/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "consulting", "karnataka", "bangalore"]
+
+  # ══════════════════════════════════════════════════
+  #  Gaming / Media — Karnataka
+  # ══════════════════════════════════════════════════
+
+  - name: "Dream11"
+    careers_url: "https://www.dream11.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["gaming", "startup", "karnataka", "bangalore"]
+
+  - name: "MPL (Mobile Premier League)"
+    careers_url: "https://www.getmpl.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["gaming", "startup", "karnataka", "bangalore"]
+
+  # ══════════════════════════════════════════════════
+  #  HealthTech — Karnataka
+  # ══════════════════════════════════════════════════
+
+  - name: "Practo"
+    careers_url: "https://www.practo.com/company/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["healthtech", "startup", "karnataka", "bangalore"]
+
+  - name: "PharmEasy"
+    careers_url: "https://pharmeasy.in/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["healthtech", "startup", "karnataka", "bangalore"]
+
+  # ══════════════════════════════════════════════════
+  #  Mysore IT Companies
+  # ══════════════════════════════════════════════════
+
+  - name: "Infosys Mysore (Training Campus)"
+    careers_url: "https://www.infosys.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "training-hub", "karnataka", "mysore"]
+
+  - name: "Wipro Mysore"
+    careers_url: "https://careers.wipro.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "training-hub", "karnataka", "mysore"]
+
+  # ══════════════════════════════════════════════════
+  #  Additional Bangalore Companies
+  # ══════════════════════════════════════════════════
+
+  - name: "Atlassian India"
+    careers_url: "https://www.atlassian.com/company/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "devtools", "karnataka", "bangalore"]
+
+  - name: "LinkedIn India"
+    careers_url: "https://careers.linkedin.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "karnataka", "bangalore"]
+
+  - name: "Uber Bangalore"
+    careers_url: "https://www.uber.com/us/en/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "mobility", "karnataka", "bangalore"]
+
+  - name: "Myntra"
+    careers_url: "https://www.myntra.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "ecommerce", "karnataka", "bangalore"]
+
+  - name: "BigBasket"
+    careers_url: "https://www.bigbasket.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "ecommerce", "karnataka", "bangalore"]
+
+  - name: "Zeta"
+    careers_url: "https://www.zeta.tech/in/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Karnataka"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["unicorn", "fintech", "karnataka", "bangalore"]

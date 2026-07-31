@@ -1,0 +1,104 @@
+# ─────────────────────────────────────────────────
+# Career Tracker — Tier 1 Companies (Global)
+# ─────────────────────────────────────────────────
+# Tier 1: Companies with well-known ATS platforms
+# (Greenhouse, Lever, SmartRecruiters) that expose
+# structured JSON APIs. No JS rendering needed.
+#
+# Region: Global — see tamil_nadu.yaml and
+# karnataka.yaml for India-specific companies.
+# ─────────────────────────────────────────────────
+
+companies:
+  # ── Greenhouse ATS ──────────────────────────────
+  - name: "Airbnb"
+    careers_url: "https://careers.airbnb.com"
+    ats_type: "greenhouse"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["big-tech", "global"]
+
+  - name: "Cloudflare"
+    careers_url: "https://boards.greenhouse.io/cloudflare"
+    ats_type: "greenhouse"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["big-tech", "global"]
+
+  - name: "Figma"
+    careers_url: "https://boards.greenhouse.io/figma"
+    ats_type: "greenhouse"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["product-company", "global"]
+
+  - name: "Notion"
+    careers_url: "https://boards.greenhouse.io/notion"
+    ats_type: "greenhouse"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["product-company", "global"]
+
+  - name: "Databricks"
+    careers_url: "https://boards.greenhouse.io/databricks"
+    ats_type: "greenhouse"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["big-tech", "data", "global"]
+
+  # ── Lever ATS ───────────────────────────────────
+  - name: "Netflix"
+    careers_url: "https://jobs.lever.co/netflix"
+    ats_type: "lever"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["big-tech", "global"]
+
+  - name: "Stripe"
+    careers_url: "https://jobs.lever.co/stripe"
+    ats_type: "lever"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["fintech", "global"]
+
+  - name: "Twitch"
+    careers_url: "https://jobs.lever.co/twitch"
+    ats_type: "lever"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["big-tech", "gaming", "global"]
+
+  # ── SmartRecruiters ATS ─────────────────────────
+  - name: "Visa"
+    careers_url: "https://jobs.smartrecruiters.com/Visa"
+    ats_type: "smartrecruiters"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["fintech", "global"]
+
+  - name: "Bosch"
+    careers_url: "https://jobs.smartrecruiters.com/Bosch"
+    ats_type: "smartrecruiters"
+    fetch_strategy: "static"
+    location_filter: "global"
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["enterprise", "automotive", "global"]

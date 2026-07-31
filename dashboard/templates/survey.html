@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Fresher Recruitment Survey 2026{% endblock %}
+{% block page_title %}Fresher Recruitment Survey 2026{% endblock %}
+
+{% block content %}
+<!-- Overview Card -->
+<div class="stat-card glass" style="margin-bottom: 1.5rem; background: #ffffff;">
+    <div class="stat-icon" style="background: rgba(37, 99, 235, 0.08);">🎓</div>
+    <div class="stat-info">
+        <span class="stat-value">{{ survey.total_tracked_companies }} Genuine Companies</span>
+        <span class="stat-label">Actively tracked for fresher and trainee roles in Tamil Nadu & Karnataka</span>
+    </div>
+</div>
+
+<div class="priority-legend glass" style="margin-bottom: 1.5rem;">
+    <span class="legend-item" style="font-weight: 600; color: #1e293b;">
+        ℹ️ Market Survey Insight: {{ survey.market_summary }}
+    </span>
+</div>
+
+<!-- Active Fresher Hiring Companies Grid -->
+<div class="dashboard-grid">
+    <section class="dashboard-section glass" style="grid-column: 1 / -1; max-height: none;">
+        <div class="section-header">
+            <h2>🏢 Companies Actively Recruiting Freshers & Trainees (2026)</h2>
+        </div>
+
+        <div class="companies-grid">
+            {% for item in survey.fresher_active_companies %}
+            <div class="company-card glass">
+                <div class="company-card-header">
+                    <div class="company-avatar">{{ item.name[0] }}</div>
+                    <div class="company-info">
+                        <h3 class="company-name">{{ item.name }}</h3>
+                        <span class="job-tag fresher">📍 {{ item.hub }}</span>
+                    </div>
+                </div>
+
+                <div class="company-meta" style="grid-template-columns: 1fr;">
+                    <div class="company-meta-item">
+                        <span class="meta-icon">🎯</span>
+                        <span>Program: <strong>{{ item.program }}</strong></span>
+                    </div>
+                </div>
+
+                <div class="company-card-footer">
+                    <span class="company-status active">🟢 Actively Hiring Freshers</span>
+                    <a href="/jobs?q={{ item.name }}" class="careers-link-btn">View Jobs →</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+<!-- Top Hiring Hubs Table -->
+<div class="dashboard-grid" style="margin-top: 1.5rem;">
+    <section class="dashboard-section glass" style="grid-column: 1 / -1; max-height: none;">
+        <div class="section-header">
+            <h2>📍 Top IT Hiring Hubs for Freshers (TN & KA)</h2>
+        </div>
+
+        <div class="jobs-grid">
+            {% for hub in survey.top_hiring_hubs %}
+            <div class="job-card glass priority-good">
+                <div class="job-card-stripe"></div>
+                <div class="job-card-body">
+                    <h3 class="job-title">{{ hub.city }}, {{ hub.region }}</h3>
+                    <span class="job-company">Demand Index: <strong>{{ hub.demand_index }}</strong></span>
+
+                    <div class="job-tags" style="margin-top: 0.75rem;">
+                        {% for skill in hub.top_skills %}
+                        <span class="job-tag">⚡ {{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

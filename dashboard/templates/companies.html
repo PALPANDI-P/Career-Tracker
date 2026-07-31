@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Companies{% endblock %}
+{% block page_title %}Company Directory{% endblock %}
+
+{% block content %}
+<!-- Filters Bar -->
+<div class="filters-bar glass">
+    <form method="GET" action="/companies" class="filters-form" id="companies-filter-form">
+        <div class="filter-group">
+            <label class="filter-label">Region</label>
+            <select name="region" class="filter-select" onchange="this.form.submit()">
+                <option value="all" {% if current_region == 'all' %}selected{% endif %}>🇮🇳 All Regions</option>
+                <option value="tamil_nadu" {% if current_region == 'tamil_nadu' %}selected{% endif %}>🏛️ Tamil Nadu</option>
+                <option value="karnataka" {% if current_region == 'karnataka' %}selected{% endif %}>🏙️ Karnataka</option>
+                <option value="kerala" {% if current_region == 'kerala' %}selected{% endif %}>🌴 Kerala</option>
+                <option value="telangana" {% if current_region == 'telangana' %}selected{% endif %}>🚀 Telangana</option>
+                <option value="maharashtra" {% if current_region == 'maharashtra' %}selected{% endif %}>🏢 Maharashtra</option>
+                <option value="delhi_ncr" {% if current_region == 'delhi_ncr' %}selected{% endif %}>🏬 Delhi-NCR</option>
+                <option value="global" {% if current_region == 'global' %}selected{% endif %}>🌍 Global</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Category</label>
+            <select name="category" class="filter-select" onchange="this.form.submit()">
+                <option value="all" {% if current_category == 'all' %}selected{% endif %}>All Types</option>
+                <option value="big-tech" {% if current_category == 'big-tech' %}selected{% endif %}>🏢 Big Tech</option>
+                <option value="product" {% if current_category == 'product' %}selected{% endif %}>📦 Product Company</option>
+                <option value="mnc" {% if current_category == 'mnc' %}selected{% endif %}>🌐 MNC / Services</option>
+                <option value="startup" {% if current_category == 'startup' %}selected{% endif %}>🚀 Startup</option>
+                <option value="consulting" {% if current_category == 'consulting' %}selected{% endif %}>💼 Consulting</option>
+                <option value="fintech" {% if current_category == 'fintech' %}selected{% endif %}>💳 FinTech</option>
+                <option value="other" {% if current_category == 'other' %}selected{% endif %}>📁 Other</option>
+            </select>
+        </div>
+    </form>
+</div>
+
+<!-- Company Count -->
+<div class="result-count">
+    <span>{{ companies | length }} companies found</span>
+</div>
+
+<!-- Companies Grid -->
+<div class="companies-grid" id="companies-grid">
+    {% if companies %}
+        {% for company in companies %}
+            {% include "partials/company_card.html" %}
+        {% endfor %}
+    {% else %}
+        <div class="empty-state wide">
+            <span class="empty-icon">🏢</span>
+            <p>No companies found matching your filters.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

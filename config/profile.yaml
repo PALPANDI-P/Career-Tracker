@@ -1,0 +1,220 @@
+# ─────────────────────────────────────────────────
+# Career Tracker — User Profile
+# ─────────────────────────────────────────────────
+# Auto-generated from Palpandi P's resumes
+# Source: D:\RESUMES (Python Dev, Backend, AI/ML, Java)
+# Email: palulaptop@gmail.com
+# ─────────────────────────────────────────────────
+
+# Personal Info
+name: "Palpandi P"
+email: "palulaptop@gmail.com"
+phone: "+91-8220925062"
+github: "github.com/PALPANDI-P"
+linkedin: "linkedin.com/in/palpandii"
+
+# Education
+education:
+  - degree: "Master of Computer Applications (MCA)"
+    university: "Alagappa University, Sivaganga"
+    period: "Jul 2024 – May 2026"
+  - degree: "Bachelor of Computer Applications (BCA)"
+    university: "Madurai Kamaraj University College, Madurai"
+    period: "Jun 2021 – Apr 2024"
+
+# Resume paths for parsing
+resume_directory: "D:\\RESUMES"
+resume_variants:
+  - role: "Python Developer"
+    file: "PALPANDI_P_Resume_Python_Developer .pdf"
+    cities: ["Chennai", "Madurai"]
+  - role: "Backend Developer"
+    file: "PALPANDI_P_Resume_Backend_Developer.pdf"
+    cities: ["Chennai", "Madurai"]
+  - role: "AI/ML Developer"
+    file: "PALPANDI_P_Resume_AI_ML_Developer .pdf"
+    cities: ["Chennai", "Madurai"]
+  - role: "Java Developer"
+    file: "Palpandi_P_Java_Developer_Resume_updated.pdf"
+    cities: ["Chennai"]
+
+# Target job titles (from all resumes)
+target_titles:
+  - "Python Developer"
+  - "Backend Developer"
+  - "Software Engineer"
+  - "Full Stack Developer"
+  - "Software Developer"
+  - "Application Developer"
+  - "API Developer"
+  - "Junior Developer"
+  - "Associate Software Engineer"
+  - "Systems Engineer"
+  - "Graduate Engineer Trainee"
+  - "Trainee Software Engineer"
+  - "AI/ML Engineer"
+  - "Data Engineer"
+  - "Java Developer"
+  - "Web Developer"
+  - "Flask Developer"
+  - "FastAPI Developer"
+
+# Core technical skills (extracted from all 4 resumes)
+skills:
+  # Languages
+  - Python
+  - Java
+  - C++
+  - SQL
+  - JavaScript
+  - HTML5
+  - CSS3
+  # Web Frameworks
+  - Flask
+  - FastAPI
+  - Django
+  - REST API
+  - Microservices
+  # Databases
+  - PostgreSQL
+  - SQLite
+  - SQLAlchemy
+  - MySQL
+  - ORM
+  # Frontend
+  - React
+  - Tailwind CSS
+  - Vite
+  # Data & Automation
+  - pandas
+  - NumPy
+  - ETL Pipelines
+  - Data Wrangling
+  # AI/ML
+  - scikit-learn
+  - TensorFlow
+  - PyTorch
+  - NLP
+  - NLTK
+  - TF-IDF
+  - Machine Learning
+  - Deep Learning
+  # DevOps & Tools
+  - Git
+  - GitHub
+  - Docker
+  - VS Code
+  - Jupyter Notebook
+  - Postman
+  - Vercel
+  # Security
+  - JWT Authentication
+  - OAuth2
+  - RBAC
+  # Cloud
+  - AWS
+  - Render
+  - Heroku
+
+# Keywords that boost match score
+boost_keywords:
+  - "fresher"
+  - "freshers"
+  - "training"
+  - "trainee"
+  - "campus hire"
+  - "walk-in"
+  - "0-1 years"
+  - "0-2 years"
+  - "entry level"
+  - "graduate engineer"
+  - "MCA"
+  - "BCA"
+  - "Python"
+  - "Flask"
+  - "FastAPI"
+  - "REST API"
+  - "backend"
+  - "full stack"
+  - "remote"
+  - "hybrid"
+  - "AI"
+  - "machine learning"
+  - "NLP"
+  - "data pipeline"
+  - "microservices"
+  - "startup"
+  - "product company"
+  - "React"
+  - "PostgreSQL"
+
+# Keywords that penalize
+penalize_keywords:
+  - "clearance required"
+  - "10+ years"
+  - "8+ years"
+  - "7+ years"
+  - "5+ years"
+  - "senior architect"
+  - "director"
+  - "vice president"
+  - "CTO"
+  - "principal engineer"
+  - "staff engineer"
+  - "lead architect"
+
+# Experience level
+experience_years: 0
+
+# Target seniority levels
+target_seniority:
+  - entry
+  - junior
+  - intern
+
+# Location preferences
+preferred_locations:
+  - "Chennai"
+  - "Madurai"
+  - "Coimbatore"
+  - "Trichy"
+  - "Sivaganga"
+  - "Bangalore"
+  - "Mysore"
+  - "Trivandrum"
+  - "Kochi"
+  - "Calicut"
+  - "Tamil Nadu"
+  - "Karnataka"
+  - "Kerala"
+  - "Remote"
+  - "Hybrid"
+  - "Work from home"
+
+# Target regions
+target_regions:
+  - "tamil_nadu"
+  - "karnataka"
+  - "kerala"
+  - "global"
+
+# Summary (from Python Developer resume)
+summary: |
+  MCA graduate (Alagappa University, 2026) and results-driven Python Developer
+  with hands-on internship experience building scalable backend systems, RESTful APIs,
+  and full-stack web applications using Python, Flask, FastAPI, and SQLAlchemy.
+  Proficient in database design (PostgreSQL, SQLite), JWT authentication, and
+  microservices architecture. Skilled in data processing pipelines, automation scripts,
+  AI/ML integration (scikit-learn, NLP), and third-party API integrations.
+  Strong foundation in OOP, clean code practices, and agile development.
+  Seeking entry-level Python Developer, Backend Developer, or Software Engineer roles
+  in Chennai, Madurai, Bangalore, or Remote. Open to hybrid work.
+
+  Key internships:
+  - AI/ML Intern at Trishik Business Solutions (Dec 2025 – Mar 2026)
+  - AI Intern at Mindenious (Mar 2025 – Apr 2025)
+
+  Key projects:
+  - Resume Optimizer AI (Full-Stack ATS Platform)
+  - Automated News Classification using ML/NLP
+  - Career Tracker (this project!)

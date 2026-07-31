@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Career Tracker — AI-powered job tracking dashboard for IT freshers in Tamil Nadu and Karnataka">
+    <title>{% block title %}Career Tracker{% endblock %} — Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">🎯</span>
+                <span class="logo-text">Career<span class="logo-accent">Tracker</span></span>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}" id="nav-dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/jobs" class="nav-link {% if request.path == '/jobs' %}active{% endif %}" id="nav-jobs">
+                    <span class="nav-icon">💼</span>
+                    <span class="nav-label">Jobs</span>
+                </a>
+            </li>
+            <li>
+                <a href="/companies" class="nav-link {% if request.path == '/companies' %}active{% endif %}" id="nav-companies">
+                    <span class="nav-icon">🏢</span>
+                    <span class="nav-label">Companies</span>
+                </a>
+            </li>
+            <li>
+                <a href="/notifications" class="nav-link {% if request.path == '/notifications' %}active{% endif %}" id="nav-notifications">
+                    <span class="nav-icon">🔔</span>
+                    <span class="nav-label">Notifications</span>
+                    <span class="badge pulse" id="unread-badge" style="display:none;">0</span>
+                </a>
+            </li>
+            <li>
+                <a href="/survey" class="nav-link {% if request.path == '/survey' %}active{% endif %}" id="nav-survey">
+                    <span class="nav-icon">🎓</span>
+                    <span class="nav-label">Fresher Survey</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="status-indicator">
+                <span class="status-dot live"></span>
+                <span class="status-text">Live Tracking</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <h1 class="page-title">{% block page_title %}Dashboard{% endblock %}</h1>
+            </div>
+            <div class="top-bar-right">
+                <button class="careers-link-btn" id="btn-run-pipeline" onclick="runPipelineNow()" style="margin-right: 0.75rem; background: linear-gradient(135deg, #16a34a, #22c55e); border: none; cursor: pointer;">
+                    🔄 Refresh Jobs
+                </button>
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search jobs, companies..." id="global-search" autocomplete="off">
+                </div>
+                <div class="notification-bell" id="notification-bell">
+                    <span>🔔</span>
+                    <span class="bell-badge" id="bell-badge" style="display:none;">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-area">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Toast Container for Live Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% block scripts_extra %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "totalFound": 2,
+  "content": [
+    {
+      "id": "sr-789012",
+      "uuid": "sr-789012",
+      "name": "Junior Data Engineer",
+      "ref": "sr-789012-ref",
+      "releasedDate": "2025-07-20T00:00:00Z",
+      "company": {
+        "identifier": "TestCorp"
+      },
+      "location": {
+        "city": "San Francisco",
+        "region": "CA",
+        "country": "US",
+        "remote": false
+      },
+      "department": {
+        "label": "Data Engineering"
+      }
+    },
+    {
+      "id": "sr-789013",
+      "uuid": "sr-789013",
+      "name": "DevOps Engineer",
+      "ref": "sr-789013-ref",
+      "releasedDate": "2025-07-21T00:00:00Z",
+      "company": {
+        "identifier": "TestCorp"
+      },
+      "location": {
+        "city": "",
+        "region": "",
+        "country": "",
+        "remote": true
+      },
+      "department": {
+        "label": "Infrastructure"
+      }
+    }
+  ]
+}

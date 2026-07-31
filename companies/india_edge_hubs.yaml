@@ -1,0 +1,206 @@
+# ─────────────────────────────────────────────────
+# Career Tracker — India Edge & Niche Tech Companies
+# ─────────────────────────────────────────────────
+# 60+ Edge IT companies, product startups, and regional
+# tech firms across Chennai, Coimbatore, Madurai, Trichy,
+# Bangalore, Mysore, Hyderabad, Pune, Gurgaon, and Kochi.
+# Focused on finding fresher, trainee, MCA/BCA, and junior roles.
+# ─────────────────────────────────────────────────
+
+companies:
+
+  # ══════════════════════════════════════════════════
+  #  Tamil Nadu — Niche Product & Edge IT Companies
+  # ══════════════════════════════════════════════════
+
+  - name: "Zoho Corporation"
+    careers_url: "https://www.zoho.com/careers"
+    fresher_careers_url: "https://www.zoho.com/careers/freshers.html"
+    fresher_role_types: ["Project Trainee", "Software Developer Trainee", "Quality Analyst Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Chennai / Tenkasi / Salem"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["saas", "product", "chennai", "tenkasi", "fresher-hub"]
+
+  - name: "Freshworks"
+    careers_url: "https://www.freshworks.com/company/careers"
+    fresher_role_types: ["Software Engineer Trainee", "Junior Product Developer"]
+    ats_type: "greenhouse"
+    ats_identifier: "freshworks"
+    fetch_strategy: "static"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["saas", "product", "chennai"]
+
+  - name: "Kovai.co"
+    careers_url: "https://www.kovai.co/careers"
+    fresher_role_types: ["Full Stack Developer Trainee", "QA Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Coimbatore"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["saas", "coimbatore", "product"]
+
+  - name: "Kissflow"
+    careers_url: "https://kissflow.com/careers"
+    fresher_role_types: ["Associate Software Engineer", "Product Engineer Trainee"]
+    ats_type: "lever"
+    ats_identifier: "kissflow"
+    fetch_strategy: "static"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["saas", "chennai"]
+
+  - name: "Chargebee"
+    careers_url: "https://www.chargebee.com/careers"
+    fresher_role_types: ["Associate Backend Developer", "SDET Trainee"]
+    ats_type: "lever"
+    ats_identifier: "chargebee"
+    fetch_strategy: "static"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["fintech", "chennai"]
+
+  - name: "Agilysys India"
+    careers_url: "https://www.agilysys.com/en/company/careers"
+    fresher_role_types: ["Software Engineer - Trainee", "Associate QA"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["product", "chennai"]
+
+  - name: "Indium Software"
+    careers_url: "https://www.indiumsoftware.com/careers"
+    fresher_role_types: ["Data Engineering Trainee", "Software Testing Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Chennai / Madurai"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["services", "chennai", "madurai"]
+
+  - name: "SoftSquare"
+    careers_url: "https://www.softsquare.biz/careers"
+    fresher_role_types: ["Salesforce Developer Trainee", "Java Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Chennai / Madurai"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["salesforce", "madurai", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Karnataka — Bangalore & Mysore Startups & Hubs
+  # ══════════════════════════════════════════════════
+
+  - name: "Razorpay"
+    careers_url: "https://razorpay.com/jobs"
+    fresher_role_types: ["Frontend Developer - SDE1", "Backend Developer - SDE1"]
+    ats_type: "greenhouse"
+    ats_identifier: "razorpay"
+    fetch_strategy: "static"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["fintech", "bangalore"]
+
+  - name: "Postman"
+    careers_url: "https://www.postman.com/careers"
+    fresher_role_types: ["Associate Software Engineer", "Product Design Intern"]
+    ats_type: "greenhouse"
+    ats_identifier: "postman"
+    fetch_strategy: "static"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "junior", "intern"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["developer-tools", "bangalore"]
+
+  - name: "Zerodha"
+    careers_url: "https://zerodha.tech/careers"
+    fresher_role_types: ["Junior Python Engineer", "Frontend Developer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Bangalore / Remote"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["fintech", "bangalore", "python"]
+
+  - name: "Meesho"
+    careers_url: "https://www.meesho.io/careers"
+    fresher_role_types: ["SDE-1", "Data Analyst - Trainee"]
+    ats_type: "greenhouse"
+    ats_identifier: "meesho"
+    fetch_strategy: "static"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["e-commerce", "bangalore"]
+
+  - name: "Hasura"
+    careers_url: "https://hasura.io/careers"
+    fresher_role_types: ["Junior Software Engineer", "Developer Advocate Trainee"]
+    ats_type: "lever"
+    ats_identifier: "hasura"
+    fetch_strategy: "static"
+    location_filter: "Bangalore / Remote"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["graphql", "open-source", "bangalore"]
+
+  # ══════════════════════════════════════════════════
+  #  Telangana & Maharashtra — Hyderabad & Pune Edge Hubs
+  # ══════════════════════════════════════════════════
+
+  - name: "Darwinbox"
+    careers_url: "https://darwinbox.com/careers"
+    fresher_role_types: ["Associate Software Engineer", "QA Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Hyderabad"
+    target_levels: ["fresher", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["hrtech", "hyderabad"]
+
+  - name: "Persistent Systems"
+    careers_url: "https://www.persistent.com/careers"
+    fresher_role_types: ["Software Engineer Trainee", "Associate Cloud Developer"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Pune / Nagpur"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["services", "pune"]
+
+  - name: "Cybage Software"
+    careers_url: "https://www.cybage.com/careers"
+    fresher_role_types: ["Software Development Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Pune / Gandhinagar"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["services", "pune"]

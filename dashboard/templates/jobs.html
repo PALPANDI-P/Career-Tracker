@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Jobs{% endblock %}
+{% block page_title %}Job Listings{% endblock %}
+
+{% block content %}
+<!-- Filters Bar -->
+<div class="filters-bar glass">
+    <form method="GET" action="/jobs" class="filters-form" id="jobs-filter-form">
+        <div class="filter-group">
+            <label class="filter-label">Region</label>
+            <select name="region" class="filter-select" onchange="this.form.submit()">
+                <option value="all" {% if current_region == 'all' %}selected{% endif %}>🇮🇳 All Regions</option>
+                <option value="tamil_nadu" {% if current_region == 'tamil_nadu' %}selected{% endif %}>🏛️ Tamil Nadu</option>
+                <option value="karnataka" {% if current_region == 'karnataka' %}selected{% endif %}>🏙️ Karnataka</option>
+                <option value="kerala" {% if current_region == 'kerala' %}selected{% endif %}>🌴 Kerala</option>
+                <option value="telangana" {% if current_region == 'telangana' %}selected{% endif %}>🚀 Telangana</option>
+                <option value="maharashtra" {% if current_region == 'maharashtra' %}selected{% endif %}>🏢 Maharashtra</option>
+                <option value="delhi_ncr" {% if current_region == 'delhi_ncr' %}selected{% endif %}>🏬 Delhi-NCR</option>
+                <option value="global" {% if current_region == 'global' %}selected{% endif %}>🌍 Global</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Category</label>
+            <select name="category" class="filter-select" onchange="this.form.submit()">
+                <option value="all" {% if current_category == 'all' %}selected{% endif %}>All Categories</option>
+                <option value="fresher" {% if current_category == 'fresher' %}selected{% endif %}>🎓 Fresher</option>
+                <option value="training" {% if current_category == 'training' %}selected{% endif %}>📚 Training</option>
+                <option value="internship" {% if current_category == 'internship' %}selected{% endif %}>🎒 Internship</option>
+                <option value="junior" {% if current_category == 'junior' %}selected{% endif %}>💼 Junior</option>
+                <option value="walk_in" {% if current_category == 'walk_in' %}selected{% endif %}>🚶 Walk-in</option>
+                <option value="campus" {% if current_category == 'campus' %}selected{% endif %}>🏫 Campus</option>
+            </select>
+        </div>
+        <div class="filter-group search-filter">
+            <label class="filter-label">Search</label>
+            <input type="text" name="q" value="{{ search_q }}" placeholder="Job title, company..." class="filter-input">
+        </div>
+        <button type="submit" class="filter-btn">Search</button>
+        <a href="/api/jobs/export" class="careers-link-btn" style="align-self: flex-end; padding: 0.5rem 1rem; background: #0284c7; text-decoration: none; color: white;">
+            📥 Export CSV
+        </a>
+    </form>
+</div>
+
+<!-- Jobs Grid -->
+<div class="jobs-grid" id="jobs-grid">
+    {% if jobs %}
+        {% for job in jobs %}
+            {% set notification = job %}
+            {% include "partials/job_card.html" %}
+        {% endfor %}
+    {% else %}
+        <div class="empty-state wide">
+            <span class="empty-icon">🔍</span>
+            <p>No jobs found matching your filters.</p>
+            <p class="empty-hint">Try adjusting your region or category filters, or run the pipeline to fetch new jobs.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

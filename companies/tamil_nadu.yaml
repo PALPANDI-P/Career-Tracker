@@ -1,0 +1,580 @@
+# ─────────────────────────────────────────────────
+# Career Tracker — Tamil Nadu IT Companies
+# ─────────────────────────────────────────────────
+# 50+ IT companies with offices in Tamil Nadu
+# (Chennai, Coimbatore, Madurai, Trichy).
+# Focused on companies that actively hire freshers,
+# juniors, and trainees.
+# ─────────────────────────────────────────────────
+
+companies:
+
+  # ══════════════════════════════════════════════════
+  #  MNC IT Service Giants — Tamil Nadu
+  # ══════════════════════════════════════════════════
+
+  - name: "TCS"
+    careers_url: "https://www.tcs.com/careers"
+    fresher_careers_url: "https://learning.tcsionhub.in/hub/national-qualifier-test/"
+    fresher_role_types: ["TCS Ninja", "TCS Digital", "Graduate Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "Infosys"
+    careers_url: "https://www.infosys.com/careers"
+    fresher_careers_url: "https://www.infosys.com/careers/freshers.html"
+    fresher_role_types: ["Systems Engineer Trainee", "Operation Executive", "HackWithInfy Graduate"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "Wipro"
+    careers_url: "https://careers.wipro.com"
+    fresher_careers_url: "https://careers.wipro.com/careers-home/jobs?keyword=fresher"
+    fresher_role_types: ["Project Engineer Trainee", "Elite NLTH Fresher", "WILP Graduate Scholar"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "HCL Technologies"
+    careers_url: "https://www.hcltech.com/careers"
+    fresher_careers_url: "https://www.hcltech.com/careers/early-careers"
+    fresher_role_types: ["Graduate Engineer Trainee", "TechBee Scholar", "Software Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "Cognizant"
+    careers_url: "https://careers.cognizant.com"
+    fresher_careers_url: "https://careers.cognizant.com/global/en/campus-hiring"
+    fresher_role_types: ["GenC Developer", "GenC Next Engineer", "Programmer Analyst Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "Accenture"
+    careers_url: "https://www.accenture.com/in-en/careers"
+    fresher_careers_url: "https://www.accenture.com/in-en/careers/local/entry-level-hiring"
+    fresher_role_types: ["Associate Software Engineer", "Advanced Application Engineering Associate"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "consulting", "tamil-nadu", "chennai"]
+
+  - name: "Capgemini"
+    careers_url: "https://www.capgemini.com/in-en/careers"
+    fresher_careers_url: "https://www.capgemini.com/in-en/careers/fresher-hiring/"
+    fresher_role_types: ["Software Engineer Trainee", "Analyst Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "consulting", "tamil-nadu", "chennai"]
+
+  - name: "Tech Mahindra"
+    careers_url: "https://careers.techmahindra.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "LTIMindtree"
+    careers_url: "https://www.ltimindtree.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "Mphasis"
+    careers_url: "https://careers.mphasis.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "Hexaware"
+    careers_url: "https://hexaware.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "Virtusa"
+    careers_url: "https://www.virtusa.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  - name: "UST"
+    careers_url: "https://www.ust.com/en/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "tamil-nadu", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Product Companies — Tamil Nadu
+  # ══════════════════════════════════════════════════
+
+  - name: "Zoho"
+    careers_url: "https://www.zoho.com/careers"
+    fresher_careers_url: "https://www.zoho.com/careers/freshers.html"
+    fresher_role_types: ["Graduate Engineer Trainee", "Python Developer", "Software Developer", "Technical Support Engineer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "tamil-nadu", "chennai"]
+
+  - name: "Freshworks"
+    careers_url: "https://www.freshworks.com/company/careers"
+    fresher_careers_url: "https://www.freshworks.com/company/careers/fresher-hiring/"
+    fresher_role_types: ["Associate Software Engineer", "Product Engineer Trainee", "QA Automation Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "tamil-nadu", "chennai"]
+
+  - name: "Chargebee"
+    careers_url: "https://www.chargebee.com/careers"
+    fresher_careers_url: "https://www.chargebee.com/careers/#open-positions"
+    fresher_role_types: ["Software Engineer — Backend", "Associate Frontend Engineer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "startup", "tamil-nadu", "chennai"]
+
+  - name: "Kissflow"
+    careers_url: "https://kissflow.com/careers"
+    fresher_careers_url: "https://kissflow.com/careers/#positions"
+    fresher_role_types: ["Product Developer Trainee", "Full Stack Developer (0-1 Yr)"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "startup", "tamil-nadu", "chennai"]
+
+  - name: "Kovai.co"
+    careers_url: "https://www.kovai.co/careers"
+    fresher_careers_url: "https://www.kovai.co/careers/#openings"
+    fresher_role_types: ["Full Stack Trainee Developer", "Software Engineer Trainee (Coimbatore)"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "startup", "tamil-nadu", "coimbatore"]
+
+  - name: "Indium Software"
+    careers_url: "https://www.indiumsoftware.com/careers"
+    fresher_careers_url: "https://www.indiumsoftware.com/careers/#fresher-openings"
+    fresher_role_types: ["Software Engineer Trainee", "Data Engineering Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "tamil-nadu", "chennai"]
+
+  - name: "Ideas2IT"
+    careers_url: "https://www.ideas2it.com/careers"
+    fresher_careers_url: "https://www.ideas2it.com/careers/#freshers"
+    fresher_role_types: ["Software Engineer Trainee", "Python Developer (Freshers)"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "tamil-nadu", "chennai"]
+
+  - name: "Aspire Systems"
+    careers_url: "https://www.aspiresys.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "tamil-nadu", "chennai"]
+
+  - name: "BankBazaar"
+    careers_url: "https://careers.bankbazaar.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "fintech", "tamil-nadu", "chennai"]
+
+  - name: "Matrimony.com"
+    careers_url: "https://www.matrimony.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "tamil-nadu", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Consulting / Big 4 — Tamil Nadu Offices
+  # ══════════════════════════════════════════════════
+
+  - name: "Deloitte"
+    careers_url: "https://www2.deloitte.com/in/en/careers.html"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "big4", "tamil-nadu", "chennai"]
+
+  - name: "EY"
+    careers_url: "https://careers.ey.com/ey/search"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "big4", "tamil-nadu", "chennai"]
+
+  - name: "KPMG"
+    careers_url: "https://kpmg.com/in/en/home/careers.html"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "big4", "tamil-nadu", "chennai"]
+
+  - name: "PwC"
+    careers_url: "https://www.pwc.in/careers.html"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "big4", "tamil-nadu", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Big Tech India Offices — Tamil Nadu
+  # ══════════════════════════════════════════════════
+
+  - name: "Amazon Chennai"
+    careers_url: "https://www.amazon.jobs/en/locations/chennai-india"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "tamil-nadu", "chennai"]
+
+  - name: "PayPal Chennai"
+    careers_url: "https://careers.pypl.com/home/jobs"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "fintech", "tamil-nadu", "chennai"]
+
+  - name: "Walmart Labs Chennai"
+    careers_url: "https://careers.walmart.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "tamil-nadu", "chennai"]
+
+  - name: "Oracle Chennai"
+    careers_url: "https://www.oracle.com/in/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "enterprise", "tamil-nadu", "chennai"]
+
+  - name: "Microsoft Chennai"
+    careers_url: "https://careers.microsoft.com/v2/global/en/search"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["big-tech", "tamil-nadu", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Banking / FinTech — Tamil Nadu
+  # ══════════════════════════════════════════════════
+
+  - name: "HDFC Technology"
+    careers_url: "https://www.hdfcbank.com/personal/useful-links/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["banking", "fintech", "tamil-nadu", "chennai"]
+
+  - name: "Fiserv Chennai"
+    careers_url: "https://careers.fiserv.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["fintech", "tamil-nadu", "chennai"]
+
+  - name: "Standard Chartered GBS"
+    careers_url: "https://www.sc.com/en/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["banking", "fintech", "tamil-nadu", "chennai"]
+
+  - name: "BNY Mellon Chennai"
+    careers_url: "https://www.bnymellon.com/us/en/careers.html"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["banking", "fintech", "tamil-nadu", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Automotive / Manufacturing IT — Tamil Nadu
+  # ══════════════════════════════════════════════════
+
+  - name: "Hyundai Mobis Chennai"
+    careers_url: "https://www.mobis.co.kr/en/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["automotive", "manufacturing", "tamil-nadu", "chennai"]
+
+  - name: "Renault Nissan Technology"
+    careers_url: "https://www.renaultgroup.com/en/talent"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["automotive", "manufacturing", "tamil-nadu", "chennai"]
+
+  - name: "Caterpillar Chennai"
+    careers_url: "https://careers.caterpillar.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["manufacturing", "tamil-nadu", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Mid-tier / Growing Companies — Tamil Nadu
+  # ══════════════════════════════════════════════════
+
+  - name: "Informatica Chennai"
+    careers_url: "https://www.informatica.com/about-us/careers.html"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["enterprise", "tamil-nadu", "chennai"]
+
+  - name: "Coda Global"
+    careers_url: "https://www.codaglobal.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mid-tier", "tamil-nadu", "chennai"]
+
+  - name: "Securin"
+    careers_url: "https://www.securin.io/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["cybersecurity", "startup", "tamil-nadu", "chennai"]
+
+  - name: "CareStack"
+    careers_url: "https://www.carestack.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["healthtech", "startup", "tamil-nadu", "chennai"]
+
+  - name: "Athena Health Chennai"
+    careers_url: "https://www.athenahealth.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["healthtech", "tamil-nadu", "chennai"]
+
+  - name: "Temenos Chennai"
+    careers_url: "https://www.temenos.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["fintech", "enterprise", "tamil-nadu", "chennai"]
+
+  - name: "Comcast Chennai"
+    careers_url: "https://jobs.comcast.com"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["media", "tamil-nadu", "chennai"]
+
+  - name: "Verizon Chennai"
+    careers_url: "https://www.verizon.com/about/work"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["telecom", "tamil-nadu", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Coimbatore IT Companies
+  # ══════════════════════════════════════════════════
+
+  - name: "Poornam Info Vision (Bobcares)"
+    careers_url: "https://www.poornam.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mid-tier", "tamil-nadu", "coimbatore"]
+
+  - name: "Vuram"
+    careers_url: "https://www.vuram.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "tamil-nadu", "coimbatore", "chennai"]
+
+  - name: "ClaySys Technologies"
+    careers_url: "https://www.claysys.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mid-tier", "tamil-nadu", "coimbatore"]
+
+  - name: "Magilhub"
+    careers_url: "https://www.magilhub.com/careers"
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "junior", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["startup", "tamil-nadu", "coimbatore"]

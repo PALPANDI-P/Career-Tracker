@@ -1,0 +1,45 @@
+<!-- Company Card Partial -->
+<div class="company-card glass" data-company="{{ company.name }}">
+    <div class="company-card-header">
+        <div class="company-avatar">
+            {{ company.name[0]|upper }}
+        </div>
+        <div class="company-info">
+            <h3 class="company-name">{{ company.name }}</h3>
+            <div class="company-tags-row">
+                {% for tag in company.tags|default([]) %}
+                    <span class="company-tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="company-meta">
+        <div class="company-meta-item">
+            <span class="meta-icon">📍</span>
+            <span>{{ company.location_filter|default(company._region|default('global'))|replace('_', ' ')|title }}</span>
+        </div>
+        <div class="company-meta-item">
+            <span class="meta-icon">🎓</span>
+            <span>Target: <strong>Freshers & Trainees</strong></span>
+        </div>
+        {% if company.fresher_role_types|default([]) %}
+        <div class="company-meta-item" style="grid-column: 1 / -1;">
+            <span class="meta-icon">⚡</span>
+            <span>Roles: <em>{{ company.fresher_role_types|join(', ') }}</em></span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="company-card-footer" style="flex-direction: column; gap: 0.5rem; align-items: stretch;">
+        {% set fresher_url = company.fresher_careers_url|default(company.careers_url) %}
+        <a href="{{ fresher_url }}" target="_blank" rel="noopener" class="careers-link-btn" style="text-align: center; background: linear-gradient(135deg, #1d4ed8, #2563eb);">
+            🎓 Direct Fresher Jobs Portal →
+        </a>
+        {% if company.fresher_careers_url and company.careers_url != company.fresher_careers_url %}
+        <a href="{{ company.careers_url }}" target="_blank" rel="noopener" style="font-size: 0.72rem; color: #64748b; text-align: center;">
+            Main Career Page
+        </a>
+        {% endif %}
+    </div>
+</div>

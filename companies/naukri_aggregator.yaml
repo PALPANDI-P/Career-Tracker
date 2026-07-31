@@ -1,0 +1,70 @@
+# ─────────────────────────────────────────────────
+# Career Tracker — Job Aggregator Platforms
+# ─────────────────────────────────────────────────
+# Indian job portals and aggregator sites.
+# These are used for broader discovery alongside
+# direct career page scraping.
+# ─────────────────────────────────────────────────
+
+aggregators:
+
+  - name: "Naukri.com"
+    base_url: "https://www.naukri.com"
+    search_urls:
+      fresher_tn: "https://www.naukri.com/fresher-it-jobs-in-chennai"
+      fresher_ka: "https://www.naukri.com/fresher-it-jobs-in-bangalore"
+      training_tn: "https://www.naukri.com/trainee-software-jobs-in-chennai"
+      training_ka: "https://www.naukri.com/trainee-software-jobs-in-bangalore"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "india"]
+
+  - name: "LinkedIn India"
+    base_url: "https://www.linkedin.com/jobs"
+    search_urls:
+      fresher_tn: "https://www.linkedin.com/jobs/search/?keywords=fresher+software&location=Tamil+Nadu"
+      fresher_ka: "https://www.linkedin.com/jobs/search/?keywords=fresher+software&location=Karnataka"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "global"]
+
+  - name: "Indeed India"
+    base_url: "https://in.indeed.com"
+    search_urls:
+      fresher_tn: "https://in.indeed.com/jobs?q=fresher+software+engineer&l=Tamil+Nadu"
+      fresher_ka: "https://in.indeed.com/jobs?q=fresher+software+engineer&l=Karnataka"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "global"]
+
+  - name: "Instahyre"
+    base_url: "https://www.instahyre.com"
+    search_urls:
+      fresher_tn: "https://www.instahyre.com/search-jobs/?location=chennai&experience=0-1"
+      fresher_ka: "https://www.instahyre.com/search-jobs/?location=bangalore&experience=0-1"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "india"]
+
+  - name: "Freshersworld"
+    base_url: "https://www.freshersworld.com"
+    search_urls:
+      fresher_tn: "https://www.freshersworld.com/jobs/it-jobs-in-chennai"
+      fresher_ka: "https://www.freshersworld.com/jobs/it-jobs-in-bangalore"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "india", "fresher-focused"]
+
+  - name: "HiringNew"
+    base_url: "https://www.hiringnew.com"
+    search_urls:
+      all: "https://www.hiringnew.com"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "india", "fresher-focused"]
