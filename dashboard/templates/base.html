@@ -57,6 +57,12 @@
                 </a>
             </li>
             <li>
+                <a href="/discovery" class="nav-link {% if request.path.startswith('/discovery') %}active{% endif %}" id="nav-discovery">
+                    <span class="nav-icon">🚀</span>
+                    <span class="nav-label">Company Discovery</span>
+                </a>
+            </li>
+            <li>
                 <a href="/survey" class="nav-link {% if request.path == '/survey' %}active{% endif %}" id="nav-survey">
                     <span class="nav-icon">🎓</span>
                     <span class="nav-label">Fresher Survey</span>

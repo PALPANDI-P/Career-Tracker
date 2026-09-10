@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}{{ company.company_name }} — Intelligence & Evidence — Career Tracker{% endblock %}
+{% block page_title %}🏢 {{ company.company_name }} — Company Intelligence{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 1.5rem;">
+    <a href="/discovery" style="color: #60a5fa; text-decoration: none; font-weight: 600; font-size: 0.875rem;">
+        ← Back to Company Discovery Radar
+    </a>
+</div>
+
+<div class="card" style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+            <h1 style="font-size: 1.75rem; font-weight: 800; color: #f8fafc; margin: 0 0 0.5rem 0;">
+                {{ company.company_name }}
+            </h1>
+            <p style="color: #94a3b8; margin: 0; font-size: 0.95rem;">
+                Official Domain: <strong>{{ company.official_domain or 'N/A' }}</strong> | Discovery Source: <strong>{{ company.discovery_source }}</strong>
+            </p>
+        </div>
+
+        <div style="text-align: right;">
+            <span class="badge" style="
+                background: {% if company.priority == 'P0' %}rgba(34, 197, 94, 0.2){% else %}rgba(59, 130, 246, 0.2){% endif %};
+                color: {% if company.priority == 'P0' %}#4ade80{% else %}#60a5fa{% endif %};
+                border: 1px solid {% if company.priority == 'P0' %}#22c55e{% else %}#3b82f6{% endif %};
+                font-weight: 800; font-size: 0.9rem; padding: 0.4rem 0.8rem; border-radius: 8px;
+            ">
+                {{ company.priority }} Tier — Priority Score: {{ company.overall_score }}%
+            </span>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.4rem;">
+                Status: <strong>{{ company.status }}</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scores Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+        <div style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); padding: 1rem; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Hiring Activity Score</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: #38bdf8; margin-top: 0.25rem;">
+                {{ company.hiring_activity_score }} / 100
+            </div>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); padding: 1rem; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Candidate Relevance</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: #4ade80; margin-top: 0.25rem;">
+                {{ company.candidate_relevance_score }} / 100
+            </div>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); padding: 1rem; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Company Size</div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #fbbf24; margin-top: 0.4rem;">
+                {{ company.company_size }}
+            </div>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); padding: 1rem; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">ATS Integration</div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #c084fc; margin-top: 0.4rem;">
+                {{ company.ats_type|upper }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Evidence Section -->
+    <div style="margin-bottom: 2rem;">
+        <h3 style="font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.75rem;">
+            💡 Evidence-Based Classification & Intelligence Signals
+        </h3>
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 1.25rem;">
+            {% if company.evidence %}
+            <ul style="margin: 0; padding-left: 1.2rem; color: #cbd5e1; line-height: 1.6;">
+                {% for ev in company.evidence %}
+                <li style="margin-bottom: 0.4rem;">{{ ev }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p style="color: #94a3b8; margin: 0;">No explicit evidence strings recorded for this company record.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Official Actions -->
+    <div style="display: flex; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem;">
+        {% if company.official_career_url %}
+        <a href="{{ company.official_career_url }}" target="_blank" class="careers-link-btn" style="text-decoration: none; padding: 0.75rem 1.5rem; font-size: 0.95rem; font-weight: 700;">
+            Open Official Career Portal ↗
+        </a>
+        {% endif %}
+        <a href="/jobs?q={{ company.company_name }}" class="filter-tag" style="padding: 0.75rem 1.5rem; text-decoration: none; font-size: 0.95rem;">
+            View Open Jobs at {{ company.company_name }} →
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Startup & Mid-Size Company Discovery — Career Tracker{% endblock %}
+{% block page_title %}🚀 Startup & Mid-Size Company Discovery{% endblock %}
+
+{% block content %}
+<div class="discovery-header" style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+    <div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.25rem;">
+            Dynamic Company Intelligence & Hiring Radar
+        </h2>
+        <p style="font-size: 0.875rem; color: #94a3b8; margin: 0;">
+            Continuously discovering early-stage startups, Series A/B/C tech scale-ups, and mid-size product companies hiring freshers in India.
+        </p>
+    </div>
+    <button onclick="triggerDiscoveryRun()" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: transform 0.2s;">
+        ⚡ Discover New Companies
+    </button>
+</div>
+
+<!-- Filters -->
+<div class="filter-bar" style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+    <div style="font-size: 0.875rem; font-weight: 600; color: #cbd5e1;">Status Filter:</div>
+    <a href="/discovery?status=all" class="filter-tag {% if current_status == 'all' %}active{% endif %}">All Discovered</a>
+    <a href="/discovery?status=VERIFIED" class="filter-tag {% if current_status == 'VERIFIED' %}active{% endif %}">VERIFIED</a>
+    <a href="/discovery?status=ACTIVE_HIRING" class="filter-tag {% if current_status == 'ACTIVE_HIRING' %}active{% endif %}">ACTIVE HIRING</a>
+
+    <div style="font-size: 0.875rem; font-weight: 600; color: #cbd5e1; margin-left: 1rem;">Priority Tier:</div>
+    <a href="/discovery?priority=P0" class="filter-tag {% if current_priority == 'P0' %}active{% endif %}" style="border-color: #22c55e;">🟢 P0 (High Priority)</a>
+    <a href="/discovery?priority=P1" class="filter-tag {% if current_priority == 'P1' %}active{% endif %}" style="border-color: #3b82f6;">🔵 P1 (Active)</a>
+    <a href="/discovery?priority=P2" class="filter-tag {% if current_priority == 'P2' %}active{% endif %}" style="border-color: #f59e0b;">🟡 P2 (Moderate)</a>
+</div>
+
+<!-- Discovered Companies List -->
+<div class="companies-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.25rem;">
+    {% for co in companies %}
+    <div class="company-card" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s;">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <div>
+                    <h3 style="font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin: 0 0 0.25rem 0;">
+                        <a href="/discovery/company/{{ co.id }}" style="color: inherit; text-decoration: none;">
+                            {{ co.company_name }}
+                        </a>
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #94a3b8;">
+                        🌐 {{ co.official_domain or 'Verified Source' }}
+                    </div>
+                </div>
+                <span class="badge" style="
+                    background: {% if co.priority == 'P0' %}rgba(34, 197, 94, 0.15){% elif co.priority == 'P1' %}rgba(59, 130, 246, 0.15){% else %}rgba(245, 158, 11, 0.15){% endif %};
+                    color: {% if co.priority == 'P0' %}#4ade80{% elif co.priority == 'P1' %}#60a5fa{% else %}#fbbf24{% endif %};
+                    border: 1px solid {% if co.priority == 'P0' %}#22c55e{% elif co.priority == 'P1' %}#3b82f6{% else %}#f59e0b{% endif %};
+                    font-weight: 700; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 6px;
+                ">
+                    {{ co.priority }} Tier ({{ co.overall_score }}%)
+                </span>
+            </div>
+
+            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.85rem;">
+                <span style="font-size: 0.7rem; background: rgba(255, 255, 255, 0.05); color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    🏷️ {{ co.company_size }}
+                </span>
+                <span style="font-size: 0.7rem; background: rgba(59, 130, 246, 0.1); color: #93c5fd; padding: 0.25rem 0.5rem; border-radius: 4px;">
+                    💻 {{ co.company_type }}
+                </span>
+                <span style="font-size: 0.7rem; background: rgba(168, 85, 247, 0.1); color: #c084fc; padding: 0.25rem 0.5rem; border-radius: 4px;">
+                    ⚙️ ATS: {{ co.ats_type|upper }}
+                </span>
+            </div>
+
+            {% if co.evidence %}
+            <div style="font-size: 0.75rem; color: #94a3b8; background: rgba(0,0,0,0.2); padding: 0.6rem; border-radius: 6px; margin-bottom: 0.85rem;">
+                <strong>💡 Intelligence Evidence:</strong>
+                <ul style="margin: 0.25rem 0 0 1rem; padding: 0;">
+                    {% for ev in co.evidence[:2] %}
+                    <li>{{ ev }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; margin-top: 0.5rem;">
+            <a href="/discovery/company/{{ co.id }}" style="font-size: 0.8rem; color: #3b82f6; font-weight: 600; text-decoration: none;">
+                Inspect Evidence & Detail →
+            </a>
+            {% if co.official_career_url %}
+            <a href="{{ co.official_career_url }}" target="_blank" style="font-size: 0.75rem; background: #2563eb; color: white; padding: 0.35rem 0.7rem; border-radius: 6px; text-decoration: none; font-weight: 600;">
+                Career Portal ↗
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% else %}
+    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: rgba(255,255,255,0.02); border-radius: 12px; color: #94a3b8;">
+        <p style="font-size: 1.1rem; margin-bottom: 1rem;">No discovered companies match this filter yet.</p>
+        <button onclick="triggerDiscoveryRun()" style="background: #2563eb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer;">
+            Run Company Discovery Engine Now
+        </button>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function triggerDiscoveryRun() {
+    fetch('/api/discovery/run', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+            alert('🚀 Company Discovery Pipeline Triggered! Discovered companies updated.');
+            window.location.reload();
+        })
+        .catch(err => alert('Error running discovery: ' + err));
+}
+</script>
+{% endblock %}

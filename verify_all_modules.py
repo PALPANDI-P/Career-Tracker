@@ -520,6 +520,51 @@ test("DedupStore — is_new/mark_seen/filter_new works correctly", test_dedup_st
 
 
 # ────────────────────────────────────────────────────────────────────────
+print("\n[14] Startup & Mid-Size Company Discovery Engine")
+
+def test_company_discovery_classification():
+    from discovery.classification_engine import classify_company
+    from schema.company_schema import CompanyClassification
+    intel = classify_company("Sarvam AI", raw_snippet="Seed AI startup", employee_count_estimate=20)
+    assert intel.classification == CompanyClassification.STARTUP_EARLY
+    assert intel.company_type.value == "AI_ML"
+
+test("Company Discovery — Evidence Classification (STARTUP_EARLY / AI_ML)", test_company_discovery_classification)
+
+def test_company_discovery_normalization_and_verification():
+    from discovery.normalization import normalize_company_name
+    from discovery.verification import verify_company_candidate
+    from schema.company_schema import DiscoveryStatus
+    assert normalize_company_name("Chargebee Technologies Pvt Ltd") == "chargebee"
+    status, ats, url, ev = verify_company_candidate("Atlan", "atlan.com", "https://boards.greenhouse.io/atlan")
+    assert status == DiscoveryStatus.VERIFIED
+    assert ats == "greenhouse"
+
+test("Company Discovery — Normalization & Official Verification Gate", test_company_discovery_normalization_and_verification)
+
+def test_company_discovery_pipeline_execution():
+    import tempfile, os, gc
+    from dedup.store import DedupStore
+    from discovery.pipeline import run_company_discovery_pipeline
+    with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as f:
+        db_path = f.name
+    try:
+        store = DedupStore(db_path)
+        summary = run_company_discovery_pipeline(store=store, max_new_companies=5)
+        assert summary["total_candidates"] > 0
+        assert summary["processed"] > 0
+        del store
+        gc.collect()
+    finally:
+        try:
+            os.unlink(db_path)
+        except PermissionError:
+            pass
+
+test("Company Discovery — Pipeline Execution & SQLite Storage", test_company_discovery_pipeline_execution)
+
+
+# ────────────────────────────────────────────────────────────────────────
 # RESULTS SUMMARY
 print()
 print("=" * 65)

@@ -145,6 +145,34 @@ def register_routes(app: Flask) -> None:
         survey_data = get_fresher_hiring_survey()
         return render_template("survey.html", survey=survey_data)
 
+    @app.route("/discovery")
+    def discovery_page():
+        """Startup & Mid-size Company Discovery Dashboard."""
+        settings = get_settings()
+        from dedup.store import DedupStore
+        store = DedupStore(settings.db_path)
+        status_filter = request.args.get("status", "all")
+        priority_filter = request.args.get("priority", "all")
+        companies = store.get_discovered_companies(status=status_filter, priority=priority_filter, limit=100)
+        return render_template(
+            "discovery.html",
+            companies=companies,
+            current_status=status_filter,
+            current_priority=priority_filter,
+        )
+
+    @app.route("/discovery/company/<int:company_id>")
+    def discovery_company_detail(company_id: int):
+        """Company Intelligence & Evidence Detail view."""
+        settings = get_settings()
+        from dedup.store import DedupStore
+        store = DedupStore(settings.db_path)
+        companies = store.get_discovered_companies(limit=500)
+        co = next((c for c in companies if c.get("id") == company_id), None)
+        if not co:
+            return "Company not found", 404
+        return render_template("discovery_detail.html", company=co)
+
     # ── API Endpoints ─────────────────────────────────
 
     @app.route("/api/pipeline/run", methods=["POST"])
@@ -250,6 +278,66 @@ def register_routes(app: Flask) -> None:
             "stats": stats,
             "timestamp": datetime.now(timezone.utc).isoformat(),
         })
+
+    # ── Discovery API Endpoints ───────────────────────
+
+    @app.route("/api/companies/discovered")
+    def api_discovered_companies():
+        """Get list of all discovered companies."""
+        settings = get_settings()
+        from dedup.store import DedupStore
+        store = DedupStore(settings.db_path)
+        status_f = request.args.get("status", "all")
+        priority_f = request.args.get("priority", "all")
+        limit = request.args.get("limit", 100, type=int)
+        companies = store.get_discovered_companies(status=status_f, priority=priority_f, limit=limit)
+        return jsonify(companies)
+
+    @app.route("/api/companies/startups")
+    def api_companies_startups():
+        """Get list of discovered startups."""
+        settings = get_settings()
+        from dedup.store import DedupStore
+        store = DedupStore(settings.db_path)
+        all_co = store.get_discovered_companies(limit=500)
+        startups = [c for c in all_co if "STARTUP" in str(c.get("company_size", "")).upper()]
+        return jsonify(startups)
+
+    @app.route("/api/companies/mid-size")
+    def api_companies_mid_size():
+        """Get list of discovered mid-size companies."""
+        settings = get_settings()
+        from dedup.store import DedupStore
+        store = DedupStore(settings.db_path)
+        all_co = store.get_discovered_companies(limit=500)
+        mid_size = [c for c in all_co if "MID_SIZE" in str(c.get("company_size", "")).upper()]
+        return jsonify(mid_size)
+
+    @app.route("/api/companies/active-hiring")
+    def api_companies_active_hiring():
+        """Get list of companies actively hiring."""
+        settings = get_settings()
+        from dedup.store import DedupStore
+        store = DedupStore(settings.db_path)
+        all_co = store.get_discovered_companies(limit=500)
+        active = [c for c in all_co if c.get("priority") in ["P0", "P1"]]
+        return jsonify(active)
+
+    @app.route("/api/discovery/run", methods=["POST"])
+    def api_run_discovery():
+        """Trigger dynamic company discovery cycle."""
+        try:
+            from discovery.pipeline import run_company_discovery_pipeline
+            summary = run_company_discovery_pipeline()
+            return jsonify({
+                "status": "success",
+                "summary": summary,
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            })
+        except Exception as e:
+            logger.warning("Discovery run error: %s", e)
+            return jsonify({"status": "error", "message": str(e)}), 500
+
 
     @app.route("/api/jobs/<job_id>/status", methods=["PUT"])
     def api_update_job_status(job_id: str):

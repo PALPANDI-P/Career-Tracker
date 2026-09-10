@@ -70,6 +70,52 @@ class DedupStore:
                 ON seen_hashes (job_id)
                 """
             )
+            # ── Discovered Companies Table ───────────
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS discovered_companies (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    company_name TEXT NOT NULL,
+                    normalized_name TEXT UNIQUE NOT NULL,
+                    official_domain TEXT,
+                    official_career_url TEXT,
+                    company_type TEXT DEFAULT 'PRODUCT',
+                    company_size TEXT DEFAULT 'STARTUP_GROWTH',
+                    company_stage TEXT DEFAULT 'UNKNOWN',
+                    employee_count_estimate INTEGER DEFAULT 0,
+                    ats_type TEXT DEFAULT 'unknown',
+                    ats_url TEXT,
+                    hiring_activity_score REAL DEFAULT 0.0,
+                    candidate_relevance_score REAL DEFAULT 0.0,
+                    overall_score REAL DEFAULT 0.0,
+                    priority TEXT DEFAULT 'P2',
+                    discovery_source TEXT DEFAULT 'search_engine',
+                    status TEXT DEFAULT 'DISCOVERED',
+                    evidence_json TEXT,
+                    confidence REAL DEFAULT 0.5,
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
+                )
+                """
+            )
+            # ── Company Intelligence Table ────────────
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS company_intelligence (
+                    company_id INTEGER PRIMARY KEY,
+                    technology_focus TEXT,
+                    industry TEXT,
+                    engineering_team_signal TEXT,
+                    open_role_count INTEGER DEFAULT 0,
+                    relevant_role_count INTEGER DEFAULT 0,
+                    fresher_role_count INTEGER DEFAULT 0,
+                    python_role_count INTEGER DEFAULT 0,
+                    ai_ml_role_count INTEGER DEFAULT 0,
+                    evidence TEXT,
+                    last_updated_at TEXT NOT NULL
+                )
+                """
+            )
             conn.commit()
 
         logger.debug("Dedup store initialized at %s", self.db_path)
@@ -206,3 +252,132 @@ class DedupStore:
                 cursor = conn.execute("DELETE FROM seen_hashes")
             conn.commit()
             return cursor.rowcount
+
+    # ─── Company Discovery Store Methods ─────────────────
+
+    def save_discovered_company(self, company_data: dict) -> int:
+        """Insert or update a discovered company entry."""
+        import json
+        now = datetime.now(timezone.utc).isoformat()
+        evidence_str = json.dumps(company_data.get("evidence", []))
+
+        with self._connect() as conn:
+            conn.row_factory = sqlite3.Row
+            existing = conn.execute(
+                "SELECT id FROM discovered_companies WHERE normalized_name = ?",
+                (company_data["normalized_name"],)
+            ).fetchone()
+
+            if existing:
+                company_id = existing["id"]
+                conn.execute(
+                    """
+                    UPDATE discovered_companies SET
+                        official_domain = COALESCE(?, official_domain),
+                        official_career_url = COALESCE(?, official_career_url),
+                        ats_type = COALESCE(?, ats_type),
+                        ats_url = COALESCE(?, ats_url),
+                        hiring_activity_score = ?,
+                        candidate_relevance_score = ?,
+                        overall_score = ?,
+                        priority = ?,
+                        status = ?,
+                        evidence_json = ?,
+                        confidence = ?,
+                        updated_at = ?
+                    WHERE id = ?
+                    """,
+                    (
+                        company_data.get("official_domain"),
+                        company_data.get("official_career_url"),
+                        company_data.get("ats_type", "unknown"),
+                        company_data.get("ats_url"),
+                        company_data.get("hiring_activity_score", 0.0),
+                        company_data.get("candidate_relevance_score", 0.0),
+                        company_data.get("overall_score", 0.0),
+                        company_data.get("priority", "P2"),
+                        company_data.get("status", "DISCOVERED"),
+                        evidence_str,
+                        company_data.get("confidence", 0.5),
+                        now,
+                        company_id,
+                    ),
+                )
+            else:
+                cur = conn.execute(
+                    """
+                    INSERT INTO discovered_companies (
+                        company_name, normalized_name, official_domain, official_career_url,
+                        company_type, company_size, company_stage, employee_count_estimate,
+                        ats_type, ats_url, hiring_activity_score, candidate_relevance_score,
+                        overall_score, priority, discovery_source, status, evidence_json,
+                        confidence, created_at, updated_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        company_data["company_name"],
+                        company_data["normalized_name"],
+                        company_data.get("official_domain"),
+                        company_data.get("official_career_url"),
+                        company_data.get("company_type", "PRODUCT"),
+                        company_data.get("company_size", "STARTUP_GROWTH"),
+                        company_data.get("company_stage", "UNKNOWN"),
+                        company_data.get("employee_count_estimate", 0),
+                        company_data.get("ats_type", "unknown"),
+                        company_data.get("ats_url"),
+                        company_data.get("hiring_activity_score", 0.0),
+                        company_data.get("candidate_relevance_score", 0.0),
+                        company_data.get("overall_score", 0.0),
+                        company_data.get("priority", "P2"),
+                        company_data.get("discovery_source", "search_engine"),
+                        company_data.get("status", "DISCOVERED"),
+                        evidence_str,
+                        company_data.get("confidence", 0.5),
+                        now,
+                        now,
+                    ),
+                )
+                company_id = cur.lastrowid
+
+            conn.commit()
+            return company_id
+
+    def get_discovered_companies(
+        self,
+        status: str | None = None,
+        priority: str | None = None,
+        limit: int = 100,
+    ) -> list[dict]:
+        """Fetch discovered companies with optional status / priority filters."""
+        import json
+        query = "SELECT * FROM discovered_companies"
+        params = []
+        conditions = []
+
+        if status and status != "all":
+            conditions.append("status = ?")
+            params.append(status)
+        if priority and priority != "all":
+            conditions.append("priority = ?")
+            params.append(priority)
+
+        if conditions:
+            query += " WHERE " + " AND ".join(conditions)
+
+        query += " ORDER BY overall_score DESC, id DESC LIMIT ?"
+        params.append(limit)
+
+        with self._connect() as conn:
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute(query, params).fetchall()
+
+        results = []
+        for r in rows:
+            d = dict(r)
+            try:
+                d["evidence"] = json.loads(d.get("evidence_json") or "[]")
+            except Exception:
+                d["evidence"] = []
+            results.append(d)
+        return results
+
