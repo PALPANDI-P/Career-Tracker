@@ -12,7 +12,7 @@
 companies:
   # ── Greenhouse ATS ──────────────────────────────
   - name: "Airbnb"
-    careers_url: "https://careers.airbnb.com"
+    careers_url: "https://boards.greenhouse.io/airbnb"
     ats_type: "greenhouse"
     fetch_strategy: "static"
     location_filter: "global"
@@ -39,12 +39,12 @@ companies:
     tags: ["product-company", "global"]
 
   - name: "Notion"
-    careers_url: "https://boards.greenhouse.io/notion"
-    ats_type: "greenhouse"
+    careers_url: "https://www.notion.so/careers"
+    ats_type: "custom"
     fetch_strategy: "static"
     location_filter: "global"
     rate_limit_seconds: 2.0
-    enabled: true
+    enabled: false   # Greenhouse board moved — re-enable when direct API found
     tags: ["product-company", "global"]
 
   - name: "Databricks"
@@ -58,8 +58,8 @@ companies:
 
   # ── Lever ATS ───────────────────────────────────
   - name: "Netflix"
-    careers_url: "https://jobs.lever.co/netflix"
-    ats_type: "lever"
+    careers_url: "https://explore.jobs.netflix.net/careers"
+    ats_type: "custom"
     fetch_strategy: "static"
     location_filter: "global"
     rate_limit_seconds: 2.0
@@ -67,8 +67,8 @@ companies:
     tags: ["big-tech", "global"]
 
   - name: "Stripe"
-    careers_url: "https://jobs.lever.co/stripe"
-    ats_type: "lever"
+    careers_url: "https://stripe.com/jobs/search"
+    ats_type: "custom"
     fetch_strategy: "static"
     location_filter: "global"
     rate_limit_seconds: 2.0
@@ -76,8 +76,8 @@ companies:
     tags: ["fintech", "global"]
 
   - name: "Twitch"
-    careers_url: "https://jobs.lever.co/twitch"
-    ats_type: "lever"
+    careers_url: "https://www.amazon.jobs/en/teams/twitch"
+    ats_type: "custom"
     fetch_strategy: "static"
     location_filter: "global"
     rate_limit_seconds: 2.0

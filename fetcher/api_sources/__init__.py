@@ -16,6 +16,7 @@ from schema.job import Job
 from fetcher.api_sources.adzuna import AdzunaFetcher, fetch_adzuna_jobs
 from fetcher.api_sources.arbeitnow import ArbeitnowFetcher, fetch_arbeitnow_jobs
 from fetcher.api_sources.findwork import FindworkFetcher, fetch_findwork_jobs
+from fetcher.api_sources.fresher_data_jobs import FresherDataJobsFetcher, fetch_fresher_data_jobs
 from fetcher.api_sources.hackernews import HackerNewsFetcher, fetch_hackernews_jobs
 from fetcher.api_sources.jobicy import JobicyFetcher, fetch_jobicy_jobs
 from fetcher.api_sources.jooble import JoobleFetcher, fetch_jooble_jobs
@@ -52,6 +53,7 @@ def fetch_all_api_jobs() -> list[Job]:
         FindworkFetcher(),
         AdzunaFetcher(),
         JSearchFetcher(),
+        FresherDataJobsFetcher(),   # data-role fresher specialist
     ]
 
     for source in sources:
@@ -70,6 +72,7 @@ __all__ = [
     "AdzunaFetcher",
     "ArbeitnowFetcher",
     "FindworkFetcher",
+    "FresherDataJobsFetcher",
     "HackerNewsFetcher",
     "JobicyFetcher",
     "JoobleFetcher",
@@ -80,6 +83,7 @@ __all__ = [
     "fetch_adzuna_jobs",
     "fetch_arbeitnow_jobs",
     "fetch_findwork_jobs",
+    "fetch_fresher_data_jobs",
     "fetch_hackernews_jobs",
     "fetch_jobicy_jobs",
     "fetch_jooble_jobs",

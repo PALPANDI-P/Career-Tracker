@@ -316,6 +316,50 @@ def test_scheduler_imports():
     from scheduler.scheduler import start_scheduler, _run_main_pipeline, _run_api_pipeline
 
 
+def test_js_fetcher_fallback():
+    from fetcher.fetch import fetch_js
+    from schema.job import CompanyConfig, ATSType
+    config = CompanyConfig(
+        name="TestJSCo",
+        careers_url="https://example.com/careers",
+        fetch_strategy="js",
+        ats_type=ATSType.CUSTOM,
+    )
+    # Should not raise NotImplementedError anymore
+    try:
+        res = fetch_js(config)
+        assert res is not None
+        assert res.company == "TestJSCo"
+    except Exception as e:
+        # Http fetch error (404/500/Connection) is fine, but NOT NotImplementedError
+        assert not isinstance(e, NotImplementedError), "fetch_js should fall back gracefully without NotImplementedError"
+
+
+def test_new_booster_apis():
+    from dashboard.app import create_app
+    app = create_app()
+    with app.test_client() as client:
+        # Test GET /api/health
+        h_resp = client.get("/api/health")
+        assert h_resp.status_code == 200
+        h_data = h_resp.get_json()
+        assert h_data["status"] == "healthy"
+
+        # Test POST /api/resume/analyze
+        r_resp = client.post(
+            "/api/resume/analyze",
+            json={
+                "job_title": "Python Fresher Developer",
+                "job_desc": "Looking for junior developer with Python, Flask, SQL skills.",
+                "skills": ["Python", "Flask", "SQL"],
+            },
+        )
+        assert r_resp.status_code == 200
+        r_data = r_resp.get_json()
+        assert "match_score" in r_data
+        assert r_data["match_score"] > 0
+
+
 def main():
     print("=" * 60)
     print("  Career Tracker — Full Verification Suite")
@@ -334,7 +378,10 @@ def main():
         ("Settings API key fields", test_settings_api_keys),
         ("Orchestrator multi-source loading", test_orchestrator_imports),
         ("Scheduler imports", test_scheduler_imports),
+        ("JS fetcher graceful fallback", test_js_fetcher_fallback),
+        ("New booster APIs (Health + Resume Analysis)", test_new_booster_apis),
     ]
+
 
     print(f"Running {len(tests)} verification tests...\n")
 

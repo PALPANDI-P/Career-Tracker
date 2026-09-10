@@ -15,6 +15,13 @@ aggregators:
       fresher_ka: "https://www.naukri.com/fresher-it-jobs-in-bangalore"
       training_tn: "https://www.naukri.com/trainee-software-jobs-in-chennai"
       training_ka: "https://www.naukri.com/trainee-software-jobs-in-bangalore"
+      # ── Data-Role Fresher Searches ──
+      data_fresher_tn: "https://www.naukri.com/data-analyst-fresher-jobs-in-chennai"
+      data_fresher_ka: "https://www.naukri.com/data-analyst-fresher-jobs-in-bangalore"
+      data_engineer_fresher: "https://www.naukri.com/data-engineer-fresher-jobs-in-india"
+      bi_fresher: "https://www.naukri.com/business-intelligence-analyst-fresher-jobs"
+      data_science_fresher: "https://www.naukri.com/data-science-fresher-jobs-in-india"
+      sql_fresher_tn: "https://www.naukri.com/sql-developer-fresher-jobs-in-chennai"
     fetch_strategy: "js"
     rate_limit_seconds: 5.0
     enabled: true
@@ -25,6 +32,12 @@ aggregators:
     search_urls:
       fresher_tn: "https://www.linkedin.com/jobs/search/?keywords=fresher+software&location=Tamil+Nadu"
       fresher_ka: "https://www.linkedin.com/jobs/search/?keywords=fresher+software&location=Karnataka"
+      # ── Data-Role Fresher Searches ──
+      data_analyst_fresher_tn: "https://www.linkedin.com/jobs/search/?keywords=data+analyst+fresher&location=Tamil+Nadu"
+      data_analyst_fresher_ka: "https://www.linkedin.com/jobs/search/?keywords=data+analyst+fresher&location=Karnataka"
+      data_engineer_fresher: "https://www.linkedin.com/jobs/search/?keywords=data+engineer+trainee&location=India"
+      bi_analyst_fresher: "https://www.linkedin.com/jobs/search/?keywords=business+intelligence+analyst+fresher&location=India"
+      ml_fresher: "https://www.linkedin.com/jobs/search/?keywords=machine+learning+engineer+fresher&location=India"
     fetch_strategy: "js"
     rate_limit_seconds: 5.0
     enabled: true
@@ -68,3 +81,39 @@ aggregators:
     rate_limit_seconds: 5.0
     enabled: true
     tags: ["aggregator", "india", "fresher-focused"]
+
+  # ══════════════════════════════════════════════════
+  #  Data-Role Fresher Aggregators
+  # ══════════════════════════════════════════════════
+
+  - name: "Internshala Jobs"
+    base_url: "https://internshala.com/jobs"
+    search_urls:
+      data_analyst: "https://internshala.com/jobs/data-science-jobs/fresher-jobs/"
+      data_engineer: "https://internshala.com/jobs/data-engineer-jobs/fresher-jobs/"
+      bi_analyst: "https://internshala.com/jobs/business-analytics-jobs/fresher-jobs/"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "india", "fresher-focused", "data-role"]
+
+  - name: "TimesJobs Data Fresher"
+    base_url: "https://www.timesjobs.com"
+    search_urls:
+      data_analyst_fresher: "https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=data+analyst&txtLocation=&cboWorkExp1=0&cboWorkExp2=0"
+      data_engineer_fresher: "https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=data+engineer+fresher&txtLocation=India"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "india", "fresher-focused", "data-role"]
+
+  - name: "Shine.com Data Fresher"
+    base_url: "https://www.shine.com"
+    search_urls:
+      data_fresher_tn: "https://www.shine.com/job-search/data-analyst-fresher-jobs-in-chennai/48-0-0-3"
+      data_fresher_ka: "https://www.shine.com/job-search/data-analyst-fresher-jobs-in-bangalore/48-0-0-8"
+      bi_fresher: "https://www.shine.com/job-search/business-intelligence-analyst-fresher-jobs/48-0-0"
+    fetch_strategy: "js"
+    rate_limit_seconds: 5.0
+    enabled: true
+    tags: ["aggregator", "india", "data-role"]

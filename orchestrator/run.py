@@ -38,6 +38,8 @@ def load_companies() -> list[dict]:
         "karnataka.yaml",
         "kerala.yaml",
         "pan_india.yaml",
+        "india_edge_hubs.yaml",
+        "data_jobs_freshers.yaml",
     ]
 
     for yaml_file in yaml_files:

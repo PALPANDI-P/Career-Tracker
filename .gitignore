@@ -24,6 +24,7 @@ env/
 .env
 
 # Data
+*.db
 data/*.db
 data/*.sqlite
 

@@ -234,6 +234,75 @@ def register_routes(app: Flask) -> None:
             headers={"Content-Disposition": "attachment; filename=fresher_jobs_digest.csv"},
         )
 
+    @app.route("/api/health")
+    def api_health():
+        """System health and diagnostic status endpoint."""
+        import sys
+        import os
+        settings = get_settings()
+        stats = _get_dashboard_stats(settings.db_path)
+        return jsonify({
+            "status": "healthy",
+            "version": "0.1.0",
+            "python_version": sys.version.split()[0],
+            "environment": "vercel" if os.getenv("VERCEL") else "local",
+            "db_path": settings.db_path,
+            "stats": stats,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        })
+
+    @app.route("/api/jobs/<job_id>/status", methods=["PUT"])
+    def api_update_job_status(job_id: str):
+        """Update job application status (saved, applied, interviewing, rejected)."""
+        data = request.get_json(silent=True) or {}
+        new_status = data.get("status", "unread")
+
+        valid_statuses = {"unread", "saved", "applied", "interviewing", "rejected"}
+        if new_status not in valid_statuses:
+            return jsonify({"error": f"Invalid status. Must be one of: {valid_statuses}"}), 400
+
+        settings = get_settings()
+        ensure_notification_tables(settings.db_path)
+        with sqlite3.connect(settings.db_path) as conn:
+            conn.execute(
+                "UPDATE notifications SET status = ? WHERE job_id = ?",
+                (new_status, job_id),
+            )
+            conn.commit()
+
+        return jsonify({"status": "updated", "job_id": job_id, "new_status": new_status})
+
+    @app.route("/api/resume/analyze", methods=["POST"])
+    def api_analyze_resume():
+        """Analyze resume alignment against a job description using AI engine."""
+        from advisor.ai_engine import analyze_fresher_fit_ai
+        data = request.get_json(silent=True) or {}
+
+        job_title = data.get("job_title", "Software Developer")
+        job_desc = data.get("job_desc", "")
+        company = data.get("company", "Tech Company")
+        skills = data.get("skills", ["Python", "Flask", "SQL", "React"])
+        user_summary = data.get("user_summary", "MCA fresher seeking developer roles.")
+
+        if not job_desc:
+            return jsonify({"error": "Missing job_desc parameter"}), 400
+
+        score, reason, note = analyze_fresher_fit_ai(
+            job_title=job_title,
+            job_desc=job_desc,
+            company=company,
+            skills=skills,
+            user_summary=user_summary,
+        )
+
+        return jsonify({
+            "match_score": score,
+            "match_percentage": f"{int(score * 100)}%",
+            "match_reason": reason,
+            "fresher_note": note,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        })
+
     # ── Server-Sent Events (SSE) ─────────────────────
 
     @app.route("/stream")
@@ -308,7 +377,9 @@ def push_notification(notification: dict) -> None:
 
 def ensure_notification_tables(db_path: str) -> None:
     """Create notification tables if they don't exist."""
+    Path(db_path).parent.mkdir(parents=True, exist_ok=True)
     with sqlite3.connect(db_path, timeout=20.0) as conn:
+
         try:
             conn.execute("PRAGMA journal_mode=WAL;")
             conn.execute("PRAGMA synchronous=NORMAL;")
@@ -330,10 +401,17 @@ def ensure_notification_tables(db_path: str) -> None:
                 city TEXT,
                 is_fresher_eligible INTEGER DEFAULT 0,
                 is_read INTEGER DEFAULT 0,
+                status TEXT DEFAULT 'unread',
                 created_at TEXT NOT NULL,
                 UNIQUE(job_id)
             )
         """)
+        # Ensure status column exists if table was created previously
+        try:
+            conn.execute("ALTER TABLE notifications ADD COLUMN status TEXT DEFAULT 'unread'")
+        except sqlite3.OperationalError:
+            pass
+
         conn.execute("""
             CREATE INDEX IF NOT EXISTS idx_notif_priority
             ON notifications (priority)
@@ -346,7 +424,16 @@ def ensure_notification_tables(db_path: str) -> None:
             CREATE INDEX IF NOT EXISTS idx_notif_region
             ON notifications (region)
         """)
+        conn.execute("""
+            CREATE INDEX IF NOT EXISTS idx_notif_search_composite
+            ON notifications (title, company, region)
+        """)
+        conn.execute("""
+            CREATE INDEX IF NOT EXISTS idx_notif_status
+            ON notifications (status)
+        """)
         conn.commit()
+
 
 
 def save_notification(db_path: str, notification: dict) -> int:

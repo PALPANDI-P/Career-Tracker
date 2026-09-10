@@ -49,6 +49,9 @@ class MatchDecision:
         self.reasoning = reasoning
 
 
+_judge_cache: dict[str, MatchDecision] = {}
+
+
 def judge_borderline(
     job: Job,
     profile: dict[str, Any],
@@ -57,7 +60,11 @@ def judge_borderline(
     Use multi-provider LLM Engine to make a judgment call on a borderline match.
 
     Called when the score falls in the borderline range (55–80%).
+    Results are cached in-memory by job.id to avoid redundant API token costs.
     """
+    if job.id in _judge_cache:
+        return _judge_cache[job.id]
+
     from advisor.llm_provider import llm_engine
 
     skills = profile.get("skills", [])
@@ -93,7 +100,9 @@ Return JSON:
         match_flag = bool(res.get("match", True))
         conf = float(res.get("confidence", 0.75))
         reason = f"[{provider_name}] {res.get('reasoning', 'Good skill alignment.')}"
-        return MatchDecision(match=match_flag, confidence=conf, reasoning=reason)
+        decision = MatchDecision(match=match_flag, confidence=conf, reasoning=reason)
+        _judge_cache[job.id] = decision
+        return decision
 
     # Local High-Precision Fallback Evaluator if no LLM provider responds
     text = f"{job.title} {job.description}".lower()
@@ -109,5 +118,8 @@ Return JSON:
     conf = min(0.60 + (match_ratio * 0.35), 0.95)
     reason = f"[Local AI Matcher] Matched {len(matching_skills)} skills: {', '.join(matching_skills[:3])}."
 
-    return MatchDecision(match=is_matched, confidence=conf, reasoning=reason)
+    decision = MatchDecision(match=is_matched, confidence=conf, reasoning=reason)
+    _judge_cache[job.id] = decision
+    return decision
+
 

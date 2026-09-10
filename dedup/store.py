@@ -74,10 +74,6 @@ class DedupStore:
 
         logger.debug("Dedup store initialized at %s", self.db_path)
 
-    def _connect(self) -> sqlite3.Connection:
-        """Create a database connection."""
-        return sqlite3.connect(str(self.db_path))
-
     def is_new(self, job: Job) -> bool:
         """
         Check if a job has been seen before.

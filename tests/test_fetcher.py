@@ -129,23 +129,33 @@ class TestStrategyDispatch:
         with pytest.raises(FetchError, match="disabled"):
             fetch_page(config)
 
-    def test_js_strategy_not_implemented(self) -> None:
+    @patch("fetcher.fetch.fetch_static")
+    def test_js_strategy_fallback(self, mock_fetch_static: MagicMock) -> None:
+        mock_fetch_static.return_value = FetchResult(
+            content="<html>", status_code=200, content_type="text/html", url="https://example.com", company="JSCo"
+        )
         config = CompanyConfig(
             name="JSCo",
             careers_url="https://example.com",
             fetch_strategy="js",
         )
-        with pytest.raises(NotImplementedError, match="Phase 5"):
-            fetch_js(config)
+        result = fetch_js(config)
+        assert result.company == "JSCo"
+        assert result.status_code == 200
 
-    def test_js_strategy_dispatch(self) -> None:
+    @patch("fetcher.fetch.fetch_static")
+    def test_js_strategy_dispatch(self, mock_fetch_static: MagicMock) -> None:
+        mock_fetch_static.return_value = FetchResult(
+            content="<html>", status_code=200, content_type="text/html", url="https://example.com", company="JSCo"
+        )
         config = CompanyConfig(
             name="JSCo",
             careers_url="https://example.com",
             fetch_strategy="js",
         )
-        with pytest.raises(NotImplementedError):
-            fetch_page(config)
+        result = fetch_page(config)
+        assert result.company == "JSCo"
+
 
 
 class TestFetchError:

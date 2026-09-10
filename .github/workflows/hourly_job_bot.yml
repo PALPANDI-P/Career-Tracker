@@ -1,0 +1,37 @@
+name: Hourly AI Job Bot & Email Alerts
+
+on:
+  schedule:
+    # Run every 1 hour (at minute 0)
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  hourly-job-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Hourly Job Monitoring Bot
+        env:
+          CT_EMAIL_TO: "palulaptop@gmail.com"
+          CT_SCHEDULE_INTERVAL_HOURS: 1
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python hourly_job_bot.py --email palulaptop@gmail.com

@@ -86,6 +86,12 @@ def _load_api_sources() -> list:
     except ImportError:
         logger.debug("Findwork fetcher not available")
 
+    try:
+        from fetcher.api_sources.fresher_data_jobs import FresherDataJobsFetcher
+        sources.append(FresherDataJobsFetcher())
+    except ImportError:
+        logger.debug("FresherDataJobs fetcher not available")
+
     return sources
 
 

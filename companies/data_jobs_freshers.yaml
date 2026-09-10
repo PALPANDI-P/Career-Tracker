@@ -1,0 +1,371 @@
+# ─────────────────────────────────────────────────
+# Career Tracker — Data-Focused Fresher Openings
+# ─────────────────────────────────────────────────
+# Companies actively hiring freshers into data roles:
+#   • Data Analyst Trainee
+#   • Junior Data Engineer
+#   • Data Science Trainee / Associate
+#   • Business Intelligence Analyst (Entry Level)
+#   • ML Engineer Trainee / Associate
+#
+# Mix of MNCs, India product companies, and IT
+# services firms with active data teams in India.
+# ─────────────────────────────────────────────────
+
+companies:
+
+  # ══════════════════════════════════════════════════
+  #  Global Data Platform Companies — India Offices
+  # ══════════════════════════════════════════════════
+
+  - name: "Snowflake"
+    careers_url: "https://careers.snowflake.com"
+    fresher_careers_url: "https://careers.snowflake.com/jobs?search=associate+engineer&teams=Engineering"
+    fresher_role_types: ["Associate Software Engineer", "Data Cloud Intern", "Solutions Engineer (New Grad)"]
+    ats_type: "greenhouse"
+    fetch_strategy: "static"
+    location_filter: "India"
+    target_levels: ["fresher", "entry", "new-grad"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["data-platform", "cloud", "global", "data-role"]
+
+  - name: "Databricks India"
+    careers_url: "https://boards.greenhouse.io/databricks"
+    fresher_careers_url: "https://boards.greenhouse.io/databricks?keywords=associate"
+    fresher_role_types: ["Associate Data Engineer", "Software Engineer New Grad", "Solutions Engineer Associate"]
+    ats_type: "greenhouse"
+    fetch_strategy: "static"
+    location_filter: "India"
+    target_levels: ["fresher", "entry", "new-grad"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["data-platform", "lakehouse", "global", "data-role"]
+
+  - name: "Fivetran"
+    careers_url: "https://fivetran.com/careers"
+    fresher_careers_url: "https://fivetran.com/careers?search=associate"
+    fresher_role_types: ["Associate Software Engineer", "Support Engineer (Entry)", "Data Integration Associate"]
+    ats_type: "greenhouse"
+    fetch_strategy: "static"
+    location_filter: "India"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["data-integration", "etl", "global", "data-role"]
+
+  - name: "Informatica"
+    careers_url: "https://www.informatica.com/company/careers.html"
+    fresher_careers_url: "https://www.informatica.com/company/careers.html#career-openings"
+    fresher_role_types: ["Software Engineer I", "Associate Data Engineer", "QA Engineer Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "India"
+    target_levels: ["fresher", "entry", "junior"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["data-integration", "cloud", "global", "data-role"]
+
+  - name: "MicroStrategy"
+    careers_url: "https://www.microstrategy.com/en/careers"
+    fresher_careers_url: "https://www.microstrategy.com/en/careers?s=associate"
+    fresher_role_types: ["Associate Technical Consultant", "Software Engineer I", "Data Analyst Associate"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "India"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 2.5
+    enabled: true
+    tags: ["business-intelligence", "analytics", "global", "data-role"]
+
+  - name: "SAS Institute"
+    careers_url: "https://www.sas.com/en_us/careers.html"
+    fresher_careers_url: "https://www.sas.com/en_us/careers/students-new-grads.html"
+    fresher_role_types: ["Associate Technical Support Engineer", "Junior Data Scientist", "Associate Software Developer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "India"
+    target_levels: ["fresher", "entry", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["analytics", "data-science", "global", "data-role"]
+
+  - name: "Qlik"
+    careers_url: "https://www.qlik.com/us/company/careers"
+    fresher_careers_url: "https://www.qlik.com/us/company/careers"
+    fresher_role_types: ["Associate Product Engineer", "Data Analyst Trainee", "Support Engineer I"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "India"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["business-intelligence", "analytics", "global", "data-role"]
+
+  - name: "Palantir Technologies"
+    careers_url: "https://www.palantir.com/careers/"
+    fresher_careers_url: "https://jobs.lever.co/palantir?commitment=New+Grad"
+    fresher_role_types: ["Forward Deployed Software Engineer (New Grad)", "Data Engineer New Grad"]
+    ats_type: "lever"
+    fetch_strategy: "static"
+    location_filter: "India"
+    target_levels: ["fresher", "new-grad"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["data-platform", "analytics", "global", "data-role"]
+
+  # ══════════════════════════════════════════════════
+  #  India Product / Unicorn Companies — Data Teams
+  # ══════════════════════════════════════════════════
+
+  - name: "Razorpay"
+    careers_url: "https://razorpay.com/jobs/"
+    fresher_careers_url: "https://razorpay.com/jobs/?department=data"
+    fresher_role_types: ["Data Analyst (0-1 yrs)", "Junior Data Engineer", "Business Analyst Associate"]
+    ats_type: "lever"
+    fetch_strategy: "static"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "entry", "junior"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["fintech", "product-company", "karnataka", "data-role"]
+
+  - name: "PhonePe"
+    careers_url: "https://www.phonepe.com/careers/"
+    fresher_careers_url: "https://www.phonepe.com/careers/?search=data"
+    fresher_role_types: ["Data Analyst (Fresher)", "Junior Data Engineer", "Analytics Engineer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "entry", "junior"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["fintech", "product-company", "karnataka", "data-role"]
+
+  - name: "CRED"
+    careers_url: "https://careers.cred.club/"
+    fresher_careers_url: "https://careers.cred.club/?department=engineering"
+    fresher_role_types: ["Data Analyst (Entry)", "Junior Analytics Engineer", "Business Analyst"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["fintech", "product-company", "karnataka", "data-role"]
+
+  - name: "Swiggy"
+    careers_url: "https://careers.swiggy.com/"
+    fresher_careers_url: "https://careers.swiggy.com/#careers/?area=Data"
+    fresher_role_types: ["Data Analyst (0-1 yr)", "Associate Data Scientist", "Analytics Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "entry", "junior"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["food-tech", "product-company", "karnataka", "data-role"]
+
+  - name: "Zomato"
+    careers_url: "https://www.zomato.com/careers"
+    fresher_careers_url: "https://www.zomato.com/careers?department=Data"
+    fresher_role_types: ["Data Analyst Trainee", "Junior Data Scientist", "Business Analyst"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Gurugram"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["food-tech", "product-company", "pan-india", "data-role"]
+
+  - name: "Meesho"
+    careers_url: "https://meesho.io/careers"
+    fresher_careers_url: "https://meesho.io/careers?department=engineering"
+    fresher_role_types: ["Data Analyst (Fresh Grad)", "Associate Data Engineer", "Business Analyst Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["e-commerce", "product-company", "karnataka", "data-role"]
+
+  - name: "Ola"
+    careers_url: "https://www.olacabs.com/careers"
+    fresher_careers_url: "https://www.olacabs.com/careers?department=data"
+    fresher_role_types: ["Data Analyst (Entry Level)", "Junior Data Engineer", "Product Analyst Fresher"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Bangalore"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mobility", "product-company", "karnataka", "data-role"]
+
+  - name: "Zepto"
+    careers_url: "https://www.zepto.team/careers"
+    fresher_careers_url: "https://www.zepto.team/careers?team=data"
+    fresher_role_types: ["Data Analyst (0-1 yrs)", "Analytics Engineer", "Business Intelligence Analyst"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Mumbai"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["quick-commerce", "product-company", "pan-india", "data-role"]
+
+  # ══════════════════════════════════════════════════
+  #  Chennai / Tamil Nadu — Data-Focused Companies
+  # ══════════════════════════════════════════════════
+
+  - name: "Zoho Analytics"
+    careers_url: "https://careers.zohocorp.com/"
+    fresher_careers_url: "https://careers.zohocorp.com/jobs/Careers"
+    fresher_role_types: ["Member Technical Staff (Data)", "Trainee Software Engineer – BI", "Junior Data Analyst"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "entry", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "saas", "tamil-nadu", "chennai", "data-role"]
+
+  - name: "Freshworks"
+    careers_url: "https://www.freshworks.com/company/careers/"
+    fresher_careers_url: "https://www.freshworks.com/company/careers/?department=engineering"
+    fresher_role_types: ["Junior Data Analyst", "Associate Data Engineer", "Product Analyst (Fresh Grad)"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "entry", "junior"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "saas", "tamil-nadu", "chennai", "data-role"]
+
+  - name: "Ramco Systems"
+    careers_url: "https://www.ramco.com/careers/"
+    fresher_careers_url: "https://www.ramco.com/careers/technology-jobs/"
+    fresher_role_types: ["Trainee Data Analyst", "Junior BI Developer", "Software Trainee – Data"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["product-company", "erp", "tamil-nadu", "chennai", "data-role"]
+
+  - name: "Kissflow"
+    careers_url: "https://kissflow.com/careers/"
+    fresher_careers_url: "https://kissflow.com/careers/"
+    fresher_role_types: ["Data Analyst (Fresher)", "Junior Product Analyst", "Business Intelligence Associate"]
+    ats_type: "custom"
+    fetch_strategy: "static"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 2.0
+    enabled: true
+    tags: ["product-company", "no-code", "tamil-nadu", "chennai", "data-role"]
+
+  # ══════════════════════════════════════════════════
+  #  IT Services — Data Practice / Data CoEs
+  # ══════════════════════════════════════════════════
+
+  - name: "TCS iON (Data Practice)"
+    careers_url: "https://www.tcs.com/careers"
+    fresher_careers_url: "https://learning.tcsionhub.in/hub/national-qualifier-test/"
+    fresher_role_types: ["Data Analyst Trainee (TCS iON)", "Graduate Engineer Trainee – Data", "Business Analyst Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "data-role", "tamil-nadu"]
+
+  - name: "Infosys Data Science"
+    careers_url: "https://www.infosys.com/careers/freshers.html"
+    fresher_careers_url: "https://www.infosys.com/careers/freshers.html"
+    fresher_role_types: ["Junior Data Scientist", "Systems Engineer – Data", "Data Analyst Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Tamil Nadu"
+    target_levels: ["fresher", "training", "junior"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "data-role", "tamil-nadu"]
+
+  - name: "Mphasis"
+    careers_url: "https://careers.mphasis.com/"
+    fresher_careers_url: "https://careers.mphasis.com/india/en/fresher-jobs"
+    fresher_role_types: ["Associate Data Engineer", "Data Analyst – Fresher", "Junior SQL Developer"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "India"
+    target_levels: ["fresher", "entry", "junior"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "data-role", "karnataka"]
+
+  - name: "Hexaware Technologies"
+    careers_url: "https://hexaware.com/careers/"
+    fresher_careers_url: "https://hexaware.com/careers/?search=fresher+data"
+    fresher_role_types: ["Data Analyst Trainee", "Associate BI Developer", "Graduate Engineer – Data & AI"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "training"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "data-role", "tamil-nadu", "chennai"]
+
+  - name: "Syntel (Atos)"
+    careers_url: "https://atos.net/en/careers"
+    fresher_careers_url: "https://atos.net/en/careers?search=fresher+data"
+    fresher_role_types: ["Associate Data Analyst", "Junior ETL Developer", "Data Engineering Trainee"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "Chennai"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["mnc", "services", "data-role", "tamil-nadu", "chennai"]
+
+  # ══════════════════════════════════════════════════
+  #  Cloud / Consulting — Data Practices
+  # ══════════════════════════════════════════════════
+
+  - name: "Deloitte India (Analytics)"
+    careers_url: "https://www2.deloitte.com/in/en/careers.html"
+    fresher_careers_url: "https://jobs2.deloitte.com/in/en?icid=top_careers_menu"
+    fresher_role_types: ["Analyst – AI & Data", "Business Technology Analyst", "Consultant (Data) – Fresher"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "India"
+    target_levels: ["fresher", "entry", "junior"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "big4", "data-role", "pan-india"]
+
+  - name: "EY (Ernst & Young) — Technology"
+    careers_url: "https://careers.ey.com/ey/go/India/3174101/"
+    fresher_careers_url: "https://careers.ey.com/ey/go/India/3174101/?search=data"
+    fresher_role_types: ["Technology Analyst (Data)", "Associate Data Engineer", "Staff – Data Analytics"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "India"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "big4", "data-role", "pan-india"]
+
+  - name: "KPMG India — Data & Analytics"
+    careers_url: "https://kpmg.com/in/en/home/careers.html"
+    fresher_careers_url: "https://kpmg.com/in/en/home/careers.html"
+    fresher_role_types: ["Analyst – Data & Analytics", "Business Analyst (Entry)", "Data Consultant Associate"]
+    ats_type: "custom"
+    fetch_strategy: "js"
+    location_filter: "India"
+    target_levels: ["fresher", "entry"]
+    rate_limit_seconds: 3.0
+    enabled: true
+    tags: ["consulting", "big4", "data-role", "pan-india"]

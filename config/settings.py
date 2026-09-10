@@ -78,7 +78,7 @@ class Settings(BaseSettings):
         description="Score above this = automatic match (no LLM needed)",
     )
     match_threshold_low: float = Field(
-        default=0.55,
+        default=0.35,
         ge=0.0,
         le=1.0,
         description="Score below this = automatic reject (no LLM needed)",
@@ -93,7 +93,7 @@ class Settings(BaseSettings):
 
     # --- Scheduling ---
     schedule_interval_hours: int = Field(
-        default=6,
+        default=1,
         ge=1,
         description="Hours between automated pipeline runs",
     )

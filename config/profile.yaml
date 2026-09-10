@@ -38,83 +38,140 @@ resume_variants:
     file: "Palpandi_P_Java_Developer_Resume_updated.pdf"
     cities: ["Chennai"]
 
-# Target job titles (from all resumes)
+# Target job titles (from Section 1 of MASTER DEVELOPMENT PROMPT)
 target_titles:
   - "Python Developer"
+  - "Junior Python Developer"
   - "Backend Developer"
-  - "Software Engineer"
-  - "Full Stack Developer"
+  - "Python Backend Developer"
   - "Software Developer"
-  - "Application Developer"
-  - "API Developer"
-  - "Junior Developer"
+  - "Junior Software Developer"
+  - "Software Engineer"
+  - "Junior Software Engineer"
   - "Associate Software Engineer"
-  - "Systems Engineer"
+  - "Software Engineer Trainee"
   - "Graduate Engineer Trainee"
-  - "Trainee Software Engineer"
+  - "GET"
+  - "AI Engineer"
   - "AI/ML Engineer"
-  - "Data Engineer"
-  - "Java Developer"
-  - "Web Developer"
-  - "Flask Developer"
-  - "FastAPI Developer"
+  - "Machine Learning Engineer"
+  - "AI/ML Developer"
+  - "NLP Engineer"
+  - "Generative AI Engineer"
+  - "Junior Data/AI Engineer"
+  - "QA/Test Engineer Trainee"
+  - "Entry-Level Software Engineer"
+  - "Entry-Level Developer"
+  - "Graduate Software Engineer"
+  - "Intern — AI/ML/Python/Software Development"
 
-# Core technical skills (extracted from all 4 resumes)
+# Core technical skills (Section 1 of MASTER DEVELOPMENT PROMPT)
 skills:
-  # Languages
   - Python
+  - SQL
   - Java
   - C++
-  - SQL
-  - JavaScript
-  - HTML5
-  - CSS3
-  # Web Frameworks
   - Flask
   - FastAPI
-  - Django
-  - REST API
-  - Microservices
-  # Databases
-  - PostgreSQL
-  - SQLite
+  - REST APIs
   - SQLAlchemy
-  - MySQL
-  - ORM
-  # Frontend
+  - JWT
   - React
   - Tailwind CSS
-  - Vite
-  # Data & Automation
-  - pandas
+  - Git
+  - GitHub
+  - PostgreSQL
+  - SQLite
+  - Pandas
   - NumPy
-  - ETL Pipelines
-  - Data Wrangling
-  # AI/ML
-  - scikit-learn
-  - TensorFlow
-  - PyTorch
+  - Scikit-learn
+  - Machine Learning
   - NLP
   - NLTK
   - TF-IDF
-  - Machine Learning
-  - Deep Learning
-  # DevOps & Tools
-  - Git
-  - GitHub
-  - Docker
-  - VS Code
-  - Jupyter Notebook
-  - Postman
+  - Naive Bayes
+  - Logistic Regression
+  - SVM
+  - GridSearchCV
+  - PCA
+  - Transformers/BERT
+  - Generative AI
+  - Google Gemini AI SDK
+  - OCR
+  - EasyOCR
+  - OpenCV
+  - Whisper
+  - Vite
   - Vercel
-  # Security
-  - JWT Authentication
-  - OAuth2
-  - RBAC
-  # Cloud
+  - Microservices
+  - Docker
   - AWS
-  - Render
-  - Heroku
+
+# Candidate Projects (Section 17 of MASTER DEVELOPMENT PROMPT)
+projects:
+  - name: "Automated News Classification System"
+    description: "Multi-modal news classification pipeline using ML, NLP, OCR, and speech-to-text"
+    technologies:
+      - Python
+      - FastAPI
+      - React
+      - OCR
+      - EasyOCR
+      - OpenCV
+      - Whisper
+      - TF-IDF
+      - NLP
+      - Machine Learning
+      - PostgreSQL
+      - Vercel
+  - name: "Resume Optimizer AI"
+    description: "Full-Stack ATS resume optimization and semantic alignment platform"
+    technologies:
+      - Python
+      - NLP
+      - LLM
+      - semantic analysis
+      - ATS optimization
+      - AI
+  - name: "Career Tracker"
+    description: "AI-powered job monitoring, matching, and application preparation assistant"
+    technologies:
+      - Python
+      - FastAPI
+      - PostgreSQL
+      - Redis
+      - Scikit-learn
+      - React
+      - Glassmorphism UI
+
+# Company Preferences (Section 1 & 4 of MASTER DEVELOPMENT PROMPT)
+preferred_company_types:
+  - "startup"
+  - "mid_size"
+  - "product"
+
+# Location Preference Weights (Section 11 of MASTER DEVELOPMENT PROMPT)
+location_weights:
+  preferred_city: 1.0
+  preferred_state: 0.9
+  remote: 0.9
+  india_other: 0.5
+  outside_india: 0.0
+
+# Priority Cities & Regions (Section 1 of MASTER DEVELOPMENT PROMPT)
+priority_cities:
+  - "Chennai"
+  - "Coimbatore"
+  - "Madurai"
+  - "Bangalore"
+  - "Mysore"
+  - "Kochi"
+  - "Trivandrum"
+
+preferred_states:
+  - "Tamil Nadu"
+  - "Karnataka"
+  - "Kerala"
 
 # Keywords that boost match score
 boost_keywords:
@@ -128,6 +185,7 @@ boost_keywords:
   - "0-2 years"
   - "entry level"
   - "graduate engineer"
+  - "GET"
   - "MCA"
   - "BCA"
   - "Python"
@@ -141,10 +199,7 @@ boost_keywords:
   - "AI"
   - "machine learning"
   - "NLP"
-  - "data pipeline"
-  - "microservices"
-  - "startup"
-  - "product company"
+  - "Generative AI"
   - "React"
   - "PostgreSQL"
 
@@ -154,6 +209,7 @@ penalize_keywords:
   - "10+ years"
   - "8+ years"
   - "7+ years"
+  - "6+ years"
   - "5+ years"
   - "senior architect"
   - "director"
@@ -175,21 +231,17 @@ target_seniority:
 # Location preferences
 preferred_locations:
   - "Chennai"
-  - "Madurai"
   - "Coimbatore"
-  - "Trichy"
-  - "Sivaganga"
+  - "Madurai"
   - "Bangalore"
   - "Mysore"
-  - "Trivandrum"
   - "Kochi"
-  - "Calicut"
+  - "Trivandrum"
   - "Tamil Nadu"
   - "Karnataka"
   - "Kerala"
   - "Remote"
   - "Hybrid"
-  - "Work from home"
 
 # Target regions
 target_regions:
@@ -200,21 +252,10 @@ target_regions:
 
 # Summary (from Python Developer resume)
 summary: |
-  MCA graduate (Alagappa University, 2026) and results-driven Python Developer
-  with hands-on internship experience building scalable backend systems, RESTful APIs,
-  and full-stack web applications using Python, Flask, FastAPI, and SQLAlchemy.
-  Proficient in database design (PostgreSQL, SQLite), JWT authentication, and
-  microservices architecture. Skilled in data processing pipelines, automation scripts,
-  AI/ML integration (scikit-learn, NLP), and third-party API integrations.
-  Strong foundation in OOP, clean code practices, and agile development.
-  Seeking entry-level Python Developer, Backend Developer, or Software Engineer roles
-  in Chennai, Madurai, Bangalore, or Remote. Open to hybrid work.
+  MCA graduate (Alagappa University, 2026) and BCA graduate (Madurai Kamaraj University College, 2024)
+  results-driven Python Developer with hands-on internship experience building scalable backend systems,
+  RESTful APIs, and full-stack AI applications using Python, Flask, FastAPI, and SQLAlchemy.
+  Proficient in database design (PostgreSQL, SQLite), JWT authentication, microservices, and AI/ML models.
+  Seeking entry-level Python Developer, Backend Developer, AI Engineer, or Software Engineer roles
+  in Chennai, Coimbatore, Madurai, Bangalore, Mysore, Kochi, Trivandrum, or Remote.
 
-  Key internships:
-  - AI/ML Intern at Trishik Business Solutions (Dec 2025 – Mar 2026)
-  - AI Intern at Mindenious (Mar 2025 – Apr 2025)
-
-  Key projects:
-  - Resume Optimizer AI (Full-Stack ATS Platform)
-  - Automated News Classification using ML/NLP
-  - Career Tracker (this project!)

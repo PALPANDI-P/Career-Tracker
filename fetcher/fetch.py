@@ -13,7 +13,7 @@ from __future__ import annotations
 import logging
 import random
 import time
-from typing import Optional
+from typing import Any, Optional
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -219,15 +219,42 @@ def fetch_static(
         raise FetchError(config.name, api_url, f"Request failed: {e}") from e
 
 
-def fetch_js(config: CompanyConfig, **kwargs) -> FetchResult:  # type: ignore[no-untyped-def]
+def fetch_js(
+    config: CompanyConfig,
+    timeout: int = 30,
+    max_retries: int = 3,
+    session: Optional[requests.Session] = None,
+    **kwargs: Any,
+) -> FetchResult:
     """
     Fetch a page using Playwright headless browser.
-    NOT YET IMPLEMENTED — Phase 5.
+
+    If Playwright is installed, uses Playwright.
+    Otherwise, gracefully falls back to enhanced static HTTP fetching.
     """
-    raise NotImplementedError(
-        f"JS fetch strategy not yet implemented (Phase 5). "
-        f"Company '{config.name}' requires Playwright."
-    )
+    try:
+        from playwright.sync_api import sync_playwright  # type: ignore[import-not-found]
+        logger.info("Fetching %s via Playwright headless browser", config.name)
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(str(config.careers_url), timeout=timeout * 1000)
+            content = page.content()
+            browser.close()
+            return FetchResult(
+                content=content,
+                status_code=200,
+                content_type="text/html",
+                url=str(config.careers_url),
+                company=config.name,
+            )
+    except Exception as e:
+        logger.warning(
+            "Playwright unavailable or failed for %s (%s). Falling back to HTTP fetch.",
+            config.name, e,
+        )
+        return fetch_static(config, timeout=timeout, max_retries=max_retries, session=session)
+
 
 
 def fetch_page(
