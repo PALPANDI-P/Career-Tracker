@@ -426,6 +426,13 @@ def populate_sample_data() -> None:
         )
         conn.commit()
 
+    # Populate discovered startup companies
+    try:
+        from discovery.pipeline import run_company_discovery_pipeline
+        run_company_discovery_pipeline(store=DedupStore(db_path))
+    except Exception as e:
+        print(f"Discovery seed error: {e}")
+
     print(f"✅ Inserted {len(SAMPLE_NOTIFICATIONS)} sample notifications into {db_path}")
     print(f"   Priority breakdown:")
     priority_counts = {}

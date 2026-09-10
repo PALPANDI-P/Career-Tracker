@@ -25,6 +25,8 @@ env/
 
 # Data
 *.db
+*.db-shm
+*.db-wal
 data/*.db
 data/*.sqlite
 
