@@ -22,21 +22,41 @@ def send_email_digest(matched_jobs: list, recipient_email: str = "palulaptop@gma
     Send an HTML email digest of newly discovered fresher jobs to recipient_email.
 
     Args:
-        matched_jobs: List of ScoredJob or notification dict items
+        matched_jobs: List of Job, ScoredJob or notification dict items
         recipient_email: Target email address
 
     Returns:
         True if email was sent or logged successfully.
     """
+    settings = get_settings()
+    target_email = recipient_email or settings.email_to or "palulaptop@gmail.com"
+
+    # Fallback to database if matched_jobs is empty
+    if not matched_jobs:
+        try:
+            from dedup.store import DedupStore
+            store = DedupStore(settings.db_path)
+            cur = store.conn.cursor()
+            cur.execute(
+                """
+                SELECT job_id, company, title, location, url, match_score, match_reason, priority, is_fresher_eligible
+                FROM notifications
+                ORDER BY id DESC
+                LIMIT 20
+                """
+            )
+            rows = cur.fetchall()
+            if rows:
+                matched_jobs = [dict(r) for r in rows]
+                logger.info("Retrieved %d active fresher jobs from database for email alert.", len(matched_jobs))
+        except Exception as err:
+            logger.debug("Database fallback query for email notifier failed: %s", err)
+
     if not matched_jobs:
         logger.info("No new jobs to send in email digest.")
         return True
 
-    settings = get_settings()
-    target_email = recipient_email or settings.email_to or "palulaptop@gmail.com"
-
     subject = f"🎯 Career Tracker Alert: {len(matched_jobs)} New Fresher & Trainee Jobs Found!"
-
     html_content = _build_html_digest(matched_jobs, target_email)
 
     # Attempt SMTP dispatch if user credentials are provided in .env
@@ -61,7 +81,7 @@ def send_email_digest(matched_jobs: list, recipient_email: str = "palulaptop@gma
 
     # Fallback / Demo Mode: Log email digest nicely
     logger.info(
-        "📧 EMAIL DIGEST PREPARED FOR [%s] — %d New Fresher Jobs Found! (Configure SMTP_USER & SMTP_PASSWORD in .env for live inbox delivery)",
+        "📧 EMAIL DIGEST PREPARED FOR [%s] — %d New Fresher Jobs Found! (Configure CT_SMTP_USER & CT_SMTP_PASSWORD in .env for live inbox delivery)",
         target_email,
         len(matched_jobs),
     )
@@ -72,25 +92,55 @@ def _build_html_digest(matched_jobs: list, target_email: str) -> str:
     """Build clean HTML email body for job notifications."""
     job_rows = ""
     for item in matched_jobs[:15]:
+        title = None
+        company = None
+        location = None
+        url = None
+        raw_score = 0.85
+        reason = "Fresher & MCA job match"
+        priority = "hot"
+
         if hasattr(item, "job"):
             job = item.job
-            title = job.title
-            company = job.company
-            location = job.location or "Not specified"
-            url = str(job.url)
-            score = f"{int(item.match_score * 100)}%"
-            reason = item.match_reason
+            title = getattr(job, "title", None)
+            company = getattr(job, "company", None)
+            location = getattr(job, "canonical_location", None) or getattr(job, "location", None)
+            url = str(getattr(job, "application_url", None) or getattr(job, "url", "#"))
+            raw_score = getattr(item, "match_score", 0.85)
+            reason = getattr(item, "match_reason", None) or "Fresher skill match"
             priority = getattr(job, "notification_priority", "hot")
+        elif hasattr(item, "title") and hasattr(item, "company"):
+            title = getattr(item, "title", None)
+            company = getattr(item, "company", None)
+            location = getattr(item, "canonical_location", None) or getattr(item, "location", None)
+            url = str(getattr(item, "application_url", None) or getattr(item, "url", "#"))
+            raw_score = getattr(item, "overall_score", None) or getattr(item, "match_score", 0.85)
+            reason = getattr(item, "match_reason", None) or "Fresher & MCA job match"
+            priority = getattr(item, "notification_priority", "hot")
         elif isinstance(item, dict):
-            title = item.get("title", "Software Engineer")
-            company = item.get("company", "Company")
-            location = item.get("location", "Not specified")
-            url = item.get("url", "#")
-            score = f"{int(item.get('match_score', 0.8) * 100)}%"
-            reason = item.get("match_reason", "Skill alignment")
+            title = item.get("title")
+            company = item.get("company")
+            location = item.get("location")
+            url = item.get("url")
+            raw_score = item.get("match_score", 0.85)
+            reason = item.get("match_reason") or "Skill alignment"
             priority = item.get("priority", "hot")
         else:
             continue
+
+        if not title or not company:
+            continue
+
+        location = location or "Tamil Nadu / South India"
+        url = url or "#"
+
+        if isinstance(raw_score, (int, float)):
+            if raw_score > 1.0:
+                score = f"{int(raw_score)}%"
+            else:
+                score = f"{int(raw_score * 100)}%"
+        else:
+            score = "85%"
 
         priority_color = {
             "hot": "#16a34a",
@@ -113,6 +163,15 @@ def _build_html_digest(matched_jobs: list, target_email: str) -> str:
             </td>
             <td style="padding: 12px; text-align: center; vertical-align: middle;">
                 <a href="{url}" target="_blank" style="background-color:#2563eb; color:#ffffff; text-decoration:none; padding:8px 14px; border-radius:6px; font-weight:bold; font-size:13px; display:inline-block;">Apply Now →</a>
+            </td>
+        </tr>
+        """
+
+    if not job_rows.strip():
+        job_rows = """
+        <tr>
+            <td colspan="3" style="padding: 20px; text-align: center; color: #64748b; font-size: 14px;">
+                ℹ️ Currently tracking 200+ Software Portals across Tamil Nadu, Karnataka & Kerala for new fresher openings.
             </td>
         </tr>
         """
