@@ -57,18 +57,21 @@ def execute_hourly_scan(target_email: str = "palulaptop@gmail.com") -> dict:
     logger.info("✅ Hourly job scan completed in %.2f seconds (exit code: %d)", elapsed, result_code)
 
     # Fetch newly matched jobs from DB to format and verify email alert
+    import sqlite3
     store = DedupStore(settings.db_path)
-    cur = store.conn.cursor()
-    cur.execute(
-        """
-        SELECT job_id, company, title, location, url, match_score, match_reason, priority, is_fresher_eligible
-        FROM notifications
-        ORDER BY id DESC
-        LIMIT 20
-        """
-    )
-    rows = cur.fetchall()
-    matched_jobs = [dict(r) for r in rows]
+    with store._connect() as conn:
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        cur.execute(
+            """
+            SELECT job_id, company, title, location, url, match_score, match_reason, priority, is_fresher_eligible
+            FROM notifications
+            ORDER BY id DESC
+            LIMIT 20
+            """
+        )
+        rows = cur.fetchall()
+        matched_jobs = [dict(r) for r in rows]
 
     if matched_jobs:
         logger.info("📧 Sending HTML Email Digest (%d roles) to %s...", len(matched_jobs), target_email)
