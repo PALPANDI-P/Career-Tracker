@@ -17,12 +17,14 @@ from fetcher.api_sources.adzuna import AdzunaFetcher, fetch_adzuna_jobs
 from fetcher.api_sources.arbeitnow import ArbeitnowFetcher, fetch_arbeitnow_jobs
 from fetcher.api_sources.findwork import FindworkFetcher, fetch_findwork_jobs
 from fetcher.api_sources.fresher_data_jobs import FresherDataJobsFetcher, fetch_fresher_data_jobs
+from fetcher.api_sources.google_jobs import GoogleJobsFetcher, fetch_google_jobs
 from fetcher.api_sources.hackernews import HackerNewsFetcher, fetch_hackernews_jobs
 from fetcher.api_sources.jobicy import JobicyFetcher, fetch_jobicy_jobs
 from fetcher.api_sources.jooble import JoobleFetcher, fetch_jooble_jobs
 from fetcher.api_sources.jsearch import JSearchFetcher, fetch_jsearch_jobs
 from fetcher.api_sources.linkedin_naukri_fetcher import LinkedInNaukriFetcher, fetch_linkedin_naukri_jobs
 from fetcher.api_sources.remoteok import RemoteOKFetcher, fetch_remoteok_jobs
+from fetcher.api_sources.remotive import RemotiveFetcher, fetch_remotive_jobs
 from fetcher.api_sources.themuse import TheMuseFetcher, fetch_themuse_jobs
 
 logger = logging.getLogger(__name__)
@@ -46,6 +48,8 @@ def fetch_all_api_jobs() -> list[Job]:
 
     sources = [
         LinkedInNaukriFetcher(),    # Genuine LinkedIn & Naukri startup & mid-level company fresher channels
+        GoogleJobsFetcher(),        # Google Jobs indexed feeds
+        RemotiveFetcher(),          # Remotive open developer jobs API
         JobicyFetcher(),
         RemoteOKFetcher(),
         ArbeitnowFetcher(),
@@ -75,22 +79,28 @@ __all__ = [
     "ArbeitnowFetcher",
     "FindworkFetcher",
     "FresherDataJobsFetcher",
+    "GoogleJobsFetcher",
     "HackerNewsFetcher",
     "JobicyFetcher",
     "JoobleFetcher",
     "JSearchFetcher",
+    "LinkedInNaukriFetcher",
     "RemoteOKFetcher",
+    "RemotiveFetcher",
     "TheMuseFetcher",
     "fetch_all_api_jobs",
     "fetch_adzuna_jobs",
     "fetch_arbeitnow_jobs",
     "fetch_findwork_jobs",
     "fetch_fresher_data_jobs",
+    "fetch_google_jobs",
     "fetch_hackernews_jobs",
     "fetch_jobicy_jobs",
     "fetch_jooble_jobs",
     "fetch_jsearch_jobs",
+    "fetch_linkedin_naukri_jobs",
     "fetch_remoteok_jobs",
+    "fetch_remotive_jobs",
     "fetch_themuse_jobs",
 ]
 

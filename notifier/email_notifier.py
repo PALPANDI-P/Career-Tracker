@@ -31,29 +31,33 @@ def send_email_digest(matched_jobs: list, recipient_email: str = "palulaptop@gma
     settings = get_settings()
     target_email = recipient_email or settings.email_to or "palulaptop@gmail.com"
 
-    # Fallback to database if matched_jobs is empty
+    # Fetch un-emailed jobs from database if matched_jobs is empty
     if not matched_jobs:
         try:
+            import sqlite3
             from dedup.store import DedupStore
             store = DedupStore(settings.db_path)
-            cur = store.conn.cursor()
-            cur.execute(
-                """
-                SELECT job_id, company, title, location, url, match_score, match_reason, priority, is_fresher_eligible
-                FROM notifications
-                ORDER BY id DESC
-                LIMIT 20
-                """
-            )
-            rows = cur.fetchall()
-            if rows:
-                matched_jobs = [dict(r) for r in rows]
-                logger.info("Retrieved %d active fresher jobs from database for email alert.", len(matched_jobs))
+            with store._connect() as conn:
+                conn.row_factory = sqlite3.Row
+                cur = conn.cursor()
+                cur.execute(
+                    """
+                    SELECT job_id, company, title, location, url, match_score, match_reason, priority, is_fresher_eligible
+                    FROM notifications
+                    WHERE is_emailed = 0 OR is_emailed IS NULL
+                    ORDER BY id DESC
+                    LIMIT 20
+                    """
+                )
+                rows = cur.fetchall()
+                if rows:
+                    matched_jobs = [dict(r) for r in rows]
+                    logger.info("Retrieved %d NEW un-notified fresher jobs from database for email alert.", len(matched_jobs))
         except Exception as err:
-            logger.debug("Database fallback query for email notifier failed: %s", err)
+            logger.debug("Database query for un-emailed notifications failed: %s", err)
 
     if not matched_jobs:
-        logger.info("No new jobs to send in email digest.")
+        logger.info("ℹ️ No new un-notified jobs in this cycle. Skipping email digest dispatch.")
         return True
 
     subject = f"🎯 Career Tracker Alert: {len(matched_jobs)} New Fresher & Trainee Jobs Found!"
@@ -75,6 +79,7 @@ def send_email_digest(matched_jobs: list, recipient_email: str = "palulaptop@gma
                 server.sendmail(settings.smtp_user, [target_email], msg.as_string())
 
             logger.info("✅ Sent email job digest (%d jobs) to %s", len(matched_jobs), target_email)
+            _mark_jobs_as_emailed(matched_jobs, settings.db_path)
             return True
         except Exception as e:
             logger.warning("SMTP email dispatch failed: %s. Logging digest locally instead.", e)
@@ -85,7 +90,31 @@ def send_email_digest(matched_jobs: list, recipient_email: str = "palulaptop@gma
         target_email,
         len(matched_jobs),
     )
+    _mark_jobs_as_emailed(matched_jobs, settings.db_path)
     return True
+
+
+def _mark_jobs_as_emailed(matched_jobs: list, db_path: str) -> None:
+    """Mark dispatched job IDs as is_emailed = 1 in database to prevent duplicate alerts."""
+    try:
+        from dedup.store import DedupStore
+        store = DedupStore(db_path)
+        job_ids = []
+        for j in matched_jobs:
+            if hasattr(j, "job"):
+                job_ids.append(j.job.id)
+            elif hasattr(j, "id"):
+                job_ids.append(getattr(j, "id"))
+            elif isinstance(j, dict) and j.get("job_id"):
+                job_ids.append(j.get("job_id"))
+
+        if job_ids:
+            with store._connect() as conn:
+                placeholders = ",".join("?" for _ in job_ids)
+                conn.execute(f"UPDATE notifications SET is_emailed = 1 WHERE job_id IN ({placeholders})", job_ids)
+            logger.info("Marked %d roles as emailed in database to prevent repeat alerts.", len(job_ids))
+    except Exception as err:
+        logger.debug("Failed to update is_emailed status in DB: %s", err)
 
 
 def _build_html_digest(matched_jobs: list, target_email: str) -> str:

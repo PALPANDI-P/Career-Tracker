@@ -56,7 +56,7 @@ def execute_hourly_scan(target_email: str = "palulaptop@gmail.com") -> dict:
     elapsed = time.time() - start_time
     logger.info("✅ Hourly job scan completed in %.2f seconds (exit code: %d)", elapsed, result_code)
 
-    # Fetch newly matched jobs from DB to format and verify email alert
+    # Fetch NEW, un-emailed matched jobs from DB to format and send email alert
     import sqlite3
     store = DedupStore(settings.db_path)
     with store._connect() as conn:
@@ -66,6 +66,7 @@ def execute_hourly_scan(target_email: str = "palulaptop@gmail.com") -> dict:
             """
             SELECT job_id, company, title, location, url, match_score, match_reason, priority, is_fresher_eligible
             FROM notifications
+            WHERE is_emailed = 0 OR is_emailed IS NULL
             ORDER BY id DESC
             LIMIT 20
             """
@@ -74,12 +75,12 @@ def execute_hourly_scan(target_email: str = "palulaptop@gmail.com") -> dict:
         matched_jobs = [dict(r) for r in rows]
 
     if matched_jobs:
-        logger.info("📧 Sending HTML Email Digest (%d roles) to %s...", len(matched_jobs), target_email)
+        logger.info("📧 Found %d NEW un-notified roles. Sending HTML Email Digest to %s...", len(matched_jobs), target_email)
         email_sent = send_email_digest(matched_jobs, recipient_email=target_email)
         if email_sent:
             logger.info("🎉 Email digest successfully delivered/logged for %s!", target_email)
     else:
-        logger.info("ℹ️ No new matched jobs in this cycle. Next scan in 1 hour.")
+        logger.info("ℹ️ No NEW matched jobs posted in this 1-hour cycle. Skipping email alert dispatch.")
 
     return {
         "status": "success" if result_code == 0 else "error",
