@@ -21,6 +21,7 @@ from fetcher.api_sources.hackernews import HackerNewsFetcher, fetch_hackernews_j
 from fetcher.api_sources.jobicy import JobicyFetcher, fetch_jobicy_jobs
 from fetcher.api_sources.jooble import JoobleFetcher, fetch_jooble_jobs
 from fetcher.api_sources.jsearch import JSearchFetcher, fetch_jsearch_jobs
+from fetcher.api_sources.linkedin_naukri_fetcher import LinkedInNaukriFetcher, fetch_linkedin_naukri_jobs
 from fetcher.api_sources.remoteok import RemoteOKFetcher, fetch_remoteok_jobs
 from fetcher.api_sources.themuse import TheMuseFetcher, fetch_themuse_jobs
 
@@ -44,6 +45,7 @@ def fetch_all_api_jobs() -> list[Job]:
     all_jobs: list[Job] = []
 
     sources = [
+        LinkedInNaukriFetcher(),    # Genuine LinkedIn & Naukri startup & mid-level company fresher channels
         JobicyFetcher(),
         RemoteOKFetcher(),
         ArbeitnowFetcher(),
