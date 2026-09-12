@@ -24,73 +24,33 @@ def _load_api_sources() -> list:
     """Load all available API source fetchers."""
     sources = []
 
-    try:
-        from fetcher.api_sources.remoteok import RemoteOKFetcher
-        sources.append(RemoteOKFetcher())
-    except ImportError:
-        logger.debug("RemoteOK fetcher not available")
+    fetchers_map = [
+        ("PanIndiaJobApiFetcher", "fetcher.api_sources.pan_india_jobs"),
+        ("LinkedInNaukriFetcher", "fetcher.api_sources.linkedin_naukri_fetcher"),
+        ("GoogleJobsFetcher", "fetcher.api_sources.google_jobs"),
+        ("RemotiveFetcher", "fetcher.api_sources.remotive"),
+        ("RemoteOKFetcher", "fetcher.api_sources.remoteok"),
+        ("ArbeitnowFetcher", "fetcher.api_sources.arbeitnow"),
+        ("AdzunaFetcher", "fetcher.api_sources.adzuna"),
+        ("JSearchFetcher", "fetcher.api_sources.jsearch"),
+        ("TheMuseFetcher", "fetcher.api_sources.themuse"),
+        ("HackerNewsFetcher", "fetcher.api_sources.hackernews"),
+        ("JobicyFetcher", "fetcher.api_sources.jobicy"),
+        ("JoobleFetcher", "fetcher.api_sources.jooble"),
+        ("FindworkFetcher", "fetcher.api_sources.findwork"),
+        ("FresherDataJobsFetcher", "fetcher.api_sources.fresher_data_jobs"),
+    ]
 
-    try:
-        from fetcher.api_sources.arbeitnow import ArbeitnowFetcher
-        sources.append(ArbeitnowFetcher())
-    except ImportError:
-        logger.debug("Arbeitnow fetcher not available")
-
-    try:
-        from fetcher.api_sources.adzuna import AdzunaFetcher
-        f = AdzunaFetcher()
-        if f.is_configured:
-            sources.append(f)
-    except ImportError:
-        logger.debug("Adzuna fetcher not available")
-
-    try:
-        from fetcher.api_sources.jsearch import JSearchFetcher
-        f = JSearchFetcher()
-        if f.is_configured:
-            sources.append(f)
-    except ImportError:
-        logger.debug("JSearch fetcher not available")
-
-    try:
-        from fetcher.api_sources.themuse import TheMuseFetcher
-        sources.append(TheMuseFetcher())
-    except ImportError:
-        logger.debug("The Muse fetcher not available")
-
-    try:
-        from fetcher.api_sources.hackernews import HackerNewsFetcher
-        sources.append(HackerNewsFetcher())
-    except ImportError:
-        logger.debug("HackerNews fetcher not available")
-
-    try:
-        from fetcher.api_sources.jobicy import JobicyFetcher
-        sources.append(JobicyFetcher())
-    except ImportError:
-        logger.debug("Jobicy fetcher not available")
-
-    try:
-        from fetcher.api_sources.jooble import JoobleFetcher
-        f = JoobleFetcher()
-        if f.is_configured:
-            sources.append(f)
-    except ImportError:
-        logger.debug("Jooble fetcher not available")
-
-    try:
-        from fetcher.api_sources.findwork import FindworkFetcher
-        f = FindworkFetcher()
-        if f.is_configured:
-            sources.append(f)
-    except ImportError:
-        logger.debug("Findwork fetcher not available")
-
-    try:
-        from fetcher.api_sources.fresher_data_jobs import FresherDataJobsFetcher
-        sources.append(FresherDataJobsFetcher())
-    except ImportError:
-        logger.debug("FresherDataJobs fetcher not available")
+    for class_name, module_path in fetchers_map:
+        try:
+            mod = __import__(module_path, fromlist=[class_name])
+            cls = getattr(mod, class_name)
+            instance = cls()
+            if hasattr(instance, "is_configured") and not instance.is_configured:
+                continue
+            sources.append(instance)
+        except Exception as e:
+            logger.debug("Fetcher %s not loaded from %s: %s", class_name, module_path, e)
 
     return sources
 

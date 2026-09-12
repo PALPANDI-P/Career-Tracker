@@ -23,6 +23,7 @@ from fetcher.api_sources.jobicy import JobicyFetcher, fetch_jobicy_jobs
 from fetcher.api_sources.jooble import JoobleFetcher, fetch_jooble_jobs
 from fetcher.api_sources.jsearch import JSearchFetcher, fetch_jsearch_jobs
 from fetcher.api_sources.linkedin_naukri_fetcher import LinkedInNaukriFetcher, fetch_linkedin_naukri_jobs
+from fetcher.api_sources.pan_india_jobs import PanIndiaJobApiFetcher, fetch_pan_india_jobs
 from fetcher.api_sources.remoteok import RemoteOKFetcher, fetch_remoteok_jobs
 from fetcher.api_sources.remotive import RemotiveFetcher, fetch_remotive_jobs
 from fetcher.api_sources.themuse import TheMuseFetcher, fetch_themuse_jobs
@@ -47,6 +48,7 @@ def fetch_all_api_jobs() -> list[Job]:
     all_jobs: list[Job] = []
 
     sources = [
+        PanIndiaJobApiFetcher(),    # Pan-India genuine tech job API (TN, KA, KL, TS, MH, Delhi-NCR)
         LinkedInNaukriFetcher(),    # Genuine LinkedIn & Naukri startup & mid-level company fresher channels
         GoogleJobsFetcher(),        # Google Jobs indexed feeds
         RemotiveFetcher(),          # Remotive open developer jobs API
@@ -85,6 +87,7 @@ __all__ = [
     "JoobleFetcher",
     "JSearchFetcher",
     "LinkedInNaukriFetcher",
+    "PanIndiaJobApiFetcher",
     "RemoteOKFetcher",
     "RemotiveFetcher",
     "TheMuseFetcher",
@@ -99,6 +102,7 @@ __all__ = [
     "fetch_jooble_jobs",
     "fetch_jsearch_jobs",
     "fetch_linkedin_naukri_jobs",
+    "fetch_pan_india_jobs",
     "fetch_remoteok_jobs",
     "fetch_remotive_jobs",
     "fetch_themuse_jobs",

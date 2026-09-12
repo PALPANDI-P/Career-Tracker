@@ -120,48 +120,56 @@ class DedupStore:
 
         logger.debug("Dedup store initialized at %s", self.db_path)
 
+    def _get_lookup_keys(self, job: Job) -> list[str]:
+        """Generate deduplication keys for job comparison."""
+        keys = [job.id]
+        if job.raw_html_hash:
+            keys.append(job.raw_html_hash)
+        c_hash = Job.make_content_hash(job.title, job.company, job.description or "", job.location or "")
+        if c_hash:
+            keys.append(c_hash)
+        return list(dict.fromkeys(keys))
+
     def is_new(self, job: Job) -> bool:
         """
-        Check if a job has been seen before.
-
-        Uses the raw_html_hash for comparison. If the hash is empty
-        (no description), falls back to the job ID.
+        Check if a job has been seen before using job ID, raw HTML hash, and content hash.
 
         Returns:
             True if the job is new (not seen before), False otherwise
         """
-        lookup_key = job.raw_html_hash or job.id
+        lookup_keys = self._get_lookup_keys(job)
+        placeholders = ",".join("?" for _ in lookup_keys)
 
         with self._connect() as conn:
             row = conn.execute(
-                "SELECT 1 FROM seen_hashes WHERE hash = ?",
-                (lookup_key,),
+                f"SELECT 1 FROM seen_hashes WHERE hash IN ({placeholders})",
+                lookup_keys,
             ).fetchone()
 
         return row is None
 
     def mark_seen(self, job: Job) -> None:
         """
-        Record a job as seen in the dedup store.
-
-        Uses INSERT OR IGNORE to handle duplicate inserts gracefully.
+        Record a job as seen in the dedup store for all lookup keys.
         """
-        lookup_key = job.raw_html_hash or job.id
+        lookup_keys = self._get_lookup_keys(job)
+        now_iso = datetime.now(timezone.utc).isoformat()
 
         with self._connect() as conn:
-            conn.execute(
-                """
-                INSERT OR IGNORE INTO seen_hashes (hash, job_id, company, title, first_seen_at)
-                VALUES (?, ?, ?, ?, ?)
-                """,
-                (
-                    lookup_key,
-                    job.id,
-                    job.company,
-                    job.title,
-                    datetime.now(timezone.utc).isoformat(),
-                ),
-            )
+            for k in lookup_keys:
+                conn.execute(
+                    """
+                    INSERT OR IGNORE INTO seen_hashes (hash, job_id, company, title, first_seen_at)
+                    VALUES (?, ?, ?, ?, ?)
+                    """,
+                    (
+                        k,
+                        job.id,
+                        job.company,
+                        job.title,
+                        now_iso,
+                    ),
+                )
             conn.commit()
 
     def filter_new(self, jobs: list[Job]) -> list[Job]:
@@ -192,11 +200,11 @@ class DedupStore:
         with self._connect() as conn:
             if company:
                 row = conn.execute(
-                    "SELECT COUNT(*) FROM seen_hashes WHERE company = ?",
+                    "SELECT COUNT(DISTINCT job_id) FROM seen_hashes WHERE company = ?",
                     (company,),
                 ).fetchone()
             else:
-                row = conn.execute("SELECT COUNT(*) FROM seen_hashes").fetchone()
+                row = conn.execute("SELECT COUNT(DISTINCT job_id) FROM seen_hashes").fetchone()
 
         return row[0] if row else 0
 
@@ -212,7 +220,7 @@ class DedupStore:
         import json
 
         now = datetime.now(timezone.utc).isoformat()
-        errors_json = json.dumps(errors or [])
+        errors_json = json.dumps(errors) if errors else None
         with self._connect() as conn:
             conn.execute(
                 """
@@ -240,18 +248,19 @@ class DedupStore:
         """
         Clear seen hashes, optionally for a specific company.
 
-        Returns the number of records deleted.
+        Returns the number of distinct jobs cleared.
         """
+        count = self.count_seen(company)
         with self._connect() as conn:
             if company:
-                cursor = conn.execute(
+                conn.execute(
                     "DELETE FROM seen_hashes WHERE company = ?",
                     (company,),
                 )
             else:
-                cursor = conn.execute("DELETE FROM seen_hashes")
+                conn.execute("DELETE FROM seen_hashes")
             conn.commit()
-            return cursor.rowcount
+            return count
 
     # ─── Company Discovery Store Methods ─────────────────
 
