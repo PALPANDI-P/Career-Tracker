@@ -89,8 +89,8 @@ def send_email_digest(matched_jobs: list, recipient_email: str = "palulaptop@gma
 
 
 def _build_html_digest(matched_jobs: list, target_email: str) -> str:
-    """Build clean HTML email body for job notifications."""
-    job_rows = ""
+    """Build clean, modern HTML email body for job notifications."""
+    job_cards = ""
     for item in matched_jobs[:15]:
         title = None
         company = None
@@ -99,6 +99,8 @@ def _build_html_digest(matched_jobs: list, target_email: str) -> str:
         raw_score = 0.85
         reason = "Fresher & MCA job match"
         priority = "hot"
+        category = "fresher"
+        skills = []
 
         if hasattr(item, "job"):
             job = item.job
@@ -109,6 +111,7 @@ def _build_html_digest(matched_jobs: list, target_email: str) -> str:
             raw_score = getattr(item, "match_score", 0.85)
             reason = getattr(item, "match_reason", None) or "Fresher skill match"
             priority = getattr(job, "notification_priority", "hot")
+            skills = getattr(job, "skills", [])
         elif hasattr(item, "title") and hasattr(item, "company"):
             title = getattr(item, "title", None)
             company = getattr(item, "company", None)
@@ -117,6 +120,7 @@ def _build_html_digest(matched_jobs: list, target_email: str) -> str:
             raw_score = getattr(item, "overall_score", None) or getattr(item, "match_score", 0.85)
             reason = getattr(item, "match_reason", None) or "Fresher & MCA job match"
             priority = getattr(item, "notification_priority", "hot")
+            skills = getattr(item, "skills", [])
         elif isinstance(item, dict):
             title = item.get("title")
             company = item.get("company")
@@ -125,6 +129,8 @@ def _build_html_digest(matched_jobs: list, target_email: str) -> str:
             raw_score = item.get("match_score", 0.85)
             reason = item.get("match_reason") or "Skill alignment"
             priority = item.get("priority", "hot")
+            category = item.get("category", "fresher")
+            skills = item.get("skills", [])
         else:
             continue
 
@@ -136,74 +142,124 @@ def _build_html_digest(matched_jobs: list, target_email: str) -> str:
 
         if isinstance(raw_score, (int, float)):
             if raw_score > 1.0:
-                score = f"{int(raw_score)}%"
+                score_num = int(raw_score)
             else:
-                score = f"{int(raw_score * 100)}%"
+                score_num = int(raw_score * 100)
         else:
-            score = "85%"
+            score_num = 85
 
-        priority_color = {
-            "hot": "#16a34a",
-            "urgent": "#dc2626",
-            "good": "#2563eb",
-            "worth_checking": "#d97706",
-            "new": "#7c3aed",
-        }.get(str(priority).lower(), "#2563eb")
+        score_text = f"{score_num}%"
 
-        job_rows += f"""
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px; vertical-align: top;">
-                <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:{priority_color}; margin-right:6px;"></span>
-                <strong style="font-size:16px; color:#1e293b;">{title}</strong><br>
-                <span style="color:#475569; font-size:14px;">🏢 <strong>{company}</strong> | 📍 {location}</span><br>
-                <em style="color:#64748b; font-size:13px; display:block; margin-top:4px;">💡 {reason}</em>
-            </td>
-            <td style="padding: 12px; text-align: center; vertical-align: middle;">
-                <span style="background-color:#eff6ff; color:#1d4ed8; font-weight:bold; padding:4px 8px; border-radius:4px; font-size:13px;">{score}</span>
-            </td>
-            <td style="padding: 12px; text-align: center; vertical-align: middle;">
-                <a href="{url}" target="_blank" style="background-color:#2563eb; color:#ffffff; text-decoration:none; padding:8px 14px; border-radius:6px; font-weight:bold; font-size:13px; display:inline-block;">Apply Now →</a>
-            </td>
-        </tr>
+        # Badge styling based on priority
+        p_str = str(priority).lower()
+        if p_str == "urgent" or "walk" in p_str:
+            badge_bg = "#fef2f2"
+            badge_color = "#dc2626"
+            badge_label = "🔥 URGENT WALK-IN"
+        elif p_str == "hot" or score_num >= 85:
+            badge_bg = "#f0fdf4"
+            badge_color = "#16a34a"
+            badge_label = "🟢 HIGH MATCH"
+        elif p_str == "good" or score_num >= 70:
+            badge_bg = "#eff6ff"
+            badge_color = "#2563eb"
+            badge_label = "🔵 STRONG MATCH"
+        else:
+            badge_bg = "#fffbeb"
+            badge_color = "#d97706"
+            badge_label = "⚡ FRESHER ROLE"
+
+        # Skill tags extraction fallback
+        if not skills:
+            t_lower = (title + " " + reason).lower()
+            detected = []
+            for kw in ["Python", "FastAPI", "Flask", "Django", "Java", "SQL", "PostgreSQL", "React", "REST API", "AI/ML", "NLP", "C++", "MCA", "GET"]:
+                if kw.lower() in t_lower:
+                    detected.append(kw)
+            skills = detected or ["Python", "Fresher", "MCA/B.E"]
+
+        skill_pills = "".join(
+            f'<span style="display:inline-block; background-color:#f1f5f9; color:#475569; padding:3px 8px; border-radius:12px; font-size:11px; font-weight:600; margin-right:4px; margin-bottom:4px;">{s}</span>'
+            for s in skills[:5]
+        )
+
+        job_cards += f"""
+        <div style="background-color:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+            <!-- Header Row: Company & Badges -->
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <div>
+                    <span style="font-size:14px; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:0.5px;">🏢 {company}</span>
+                </div>
+                <div>
+                    <span style="background-color:{badge_bg}; color:{badge_color}; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700; margin-right:6px;">{badge_label}</span>
+                    <span style="background-color:#059669; color:#ffffff; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700;">✨ {score_text} Match</span>
+                </div>
+            </div>
+
+            <!-- Job Title -->
+            <h2 style="margin:0 0 10px 0; font-size:18px; color:#0f172a; font-weight:700; line-height:1.3;">
+                {title}
+            </h2>
+
+            <!-- Metadata Pills -->
+            <div style="font-size:13px; color:#64748b; margin-bottom:12px; line-height:1.6;">
+                <span style="margin-right:14px;">📍 <strong>Location:</strong> {location}</span>
+                <span style="margin-right:14px;">💼 <strong>Category:</strong> {category.capitalize()}</span>
+                <span>🎓 <strong>Eligible:</strong> MCA / B.E / B.Tech Freshers</span>
+            </div>
+
+            <!-- Tech Stack Tags -->
+            <div style="margin-bottom:14px;">
+                {skill_pills}
+            </div>
+
+            <!-- AI Match Reason Callout -->
+            <div style="background-color:#f8fafc; border-left:4px solid #3b82f6; padding:10px 14px; border-radius:0 8px 8px 0; margin-bottom:16px;">
+                <p style="margin:0; font-size:13px; color:#334155; font-style:italic;">
+                    💡 <strong>AI Verification:</strong> {reason}
+                </p>
+            </div>
+
+            <!-- Application Action Bar -->
+            <div style="text-align:right; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <a href="{url}" target="_blank" style="background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color:#ffffff; text-decoration:none; padding:10px 22px; border-radius:8px; font-weight:700; font-size:14px; display:inline-block; box-shadow:0 4px 12px rgba(37,99,235,0.25);">
+                    🚀 Apply Directly on Official Portal →
+                </a>
+            </div>
+        </div>
         """
 
-    if not job_rows.strip():
-        job_rows = """
-        <tr>
-            <td colspan="3" style="padding: 20px; text-align: center; color: #64748b; font-size: 14px;">
-                ℹ️ Currently tracking 200+ Software Portals across Tamil Nadu, Karnataka & Kerala for new fresher openings.
-            </td>
-        </tr>
+    if not job_cards.strip():
+        job_cards = """
+        <div style="background-color:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:30px; text-align:center; color:#64748b;">
+            <p style="font-size:15px; margin:0;">ℹ️ Currently tracking 200+ Genuine Software Portals across Tamil Nadu, Karnataka & Kerala for new fresher openings.</p>
+        </div>
         """
 
     return f"""
     <!DOCTYPE html>
     <html>
-    <head><meta charset="utf-8"></head>
-    <body style="font-family: Arial, sans-serif; background-color: #f8fafc; margin: 0; padding: 20px; color: #1e293b;">
-        <div style="max-width: 650px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-            <div style="background: linear-gradient(135deg, #1d4ed8, #2563eb); padding: 24px; text-align: center; color: #ffffff;">
-                <h1 style="margin: 0; font-size: 24px;">🎯 Career Tracker — Fresher Job Alert</h1>
-                <p style="margin: 6px 0 0 0; font-size: 14px; opacity: 0.9;">New fresher & trainee openings discovered for <strong>{target_email}</strong></p>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f1f5f9; margin: 0; padding: 24px 12px; color: #1e293b;">
+        <div style="max-width: 680px; margin: 0 auto;">
+            <!-- Modern Header Banner -->
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #1e293b 100%); border-radius: 16px 16px 0 0; padding: 28px 24px; text-align: center; color: #ffffff; box-shadow: 0 4px 20px rgba(15,23,42,0.15); border-bottom: 3px solid #3b82f6;">
+                <span style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(96, 165, 250, 0.3);">⚡ LIVE FRESHER JOB ALERT</span>
+                <h1 style="margin: 12px 0 6px 0; font-size: 24px; font-weight: 800; tracking: -0.5px;">🎯 Career Tracker AI</h1>
+                <p style="margin: 0; font-size: 14px; color: #94a3b8;">New verified fresher & GET openings for <strong>{target_email}</strong></p>
             </div>
 
-            <div style="padding: 20px;">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background-color: #f1f5f9; text-align: left; font-size: 12px; text-transform: uppercase; color: #64748b;">
-                            <th style="padding: 10px;">Job Details</th>
-                            <th style="padding: 10px; text-align: center;">Match</th>
-                            <th style="padding: 10px; text-align: center;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {job_rows}
-                    </tbody>
-                </table>
+            <!-- Body Container -->
+            <div style="background-color: #f8fafc; border-radius: 0 0 16px 16px; padding: 20px 16px; border: 1px solid #e2e8f0; border-top: none;">
+                {job_cards}
 
-                <div style="margin-top: 24px; text-align: center; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #94a3b8;">
-                    Career Tracker AI • Tracking 200+ Genuine Software Company Portals across India (Tamil Nadu, Karnataka, Kerala, Telangana, Maharashtra, Delhi-NCR)<br>
-                    <a href="http://localhost:5000/notifications" style="color: #2563eb; text-decoration: none;">Open Web Dashboard</a>
+                <!-- Modern Footer -->
+                <div style="margin-top: 24px; text-align: center; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #64748b; line-height: 1.6;">
+                    <strong>Career Tracker AI Engine</strong> • Monitoring 200+ Genuine Software Portals across Tamil Nadu, Karnataka, Kerala & Pan-India<br>
+                    <a href="http://localhost:5000/notifications" style="background-color: #2563eb; color: #ffffff; text-decoration: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; font-size: 12px; display: inline-block; margin-top: 10px;">🌐 Open Web Dashboard</a>
                 </div>
             </div>
         </div>
