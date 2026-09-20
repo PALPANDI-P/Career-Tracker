@@ -8,6 +8,7 @@ when new high-priority fresher & trainee jobs are found.
 from __future__ import annotations
 
 import logging
+import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -63,20 +64,26 @@ def send_email_digest(matched_jobs: list, recipient_email: str = "palulaptop@gma
     subject = f"🎯 Career Tracker Alert: {len(matched_jobs)} New Fresher & Trainee Jobs Found!"
     html_content = _build_html_digest(matched_jobs, target_email)
 
-    # Attempt SMTP dispatch if user credentials are provided in .env
-    if settings.smtp_user and settings.smtp_password:
+    # Determine SMTP Credentials (with environment variable fallbacks for Vercel/GitHub Actions/Local)
+    smtp_user = settings.smtp_user or os.getenv("CT_SMTP_USER") or os.getenv("SMTP_USER") or os.getenv("GMAIL_USER")
+    smtp_password = settings.smtp_password or os.getenv("CT_SMTP_PASSWORD") or os.getenv("SMTP_PASSWORD") or os.getenv("GMAIL_APP_PASSWORD")
+    smtp_host = settings.smtp_host or os.getenv("CT_SMTP_HOST") or os.getenv("SMTP_HOST", "smtp.gmail.com")
+    smtp_port = settings.smtp_port or int(os.getenv("CT_SMTP_PORT") or os.getenv("SMTP_PORT", "587"))
+
+    # Attempt SMTP dispatch if user credentials are provided
+    if smtp_user and smtp_password:
         try:
             msg = MIMEMultipart("alternative")
             msg["Subject"] = subject
-            msg["From"] = settings.smtp_user
+            msg["From"] = smtp_user
             msg["To"] = target_email
 
             msg.attach(MIMEText(html_content, "html", "utf-8"))
 
-            with smtplib.SMTP(settings.smtp_host, settings.smtp_port) as server:
+            with smtplib.SMTP(smtp_host, smtp_port) as server:
                 server.starttls()
-                server.login(settings.smtp_user, settings.smtp_password)
-                server.sendmail(settings.smtp_user, [target_email], msg.as_string())
+                server.login(smtp_user, smtp_password)
+                server.sendmail(smtp_user, [target_email], msg.as_string())
 
             logger.info("✅ Sent email job digest (%d jobs) to %s", len(matched_jobs), target_email)
             _mark_jobs_as_emailed(matched_jobs, settings.db_path)
