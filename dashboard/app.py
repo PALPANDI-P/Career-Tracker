@@ -487,16 +487,20 @@ def ensure_notification_tables(db_path: str) -> None:
                 category TEXT DEFAULT 'unknown',
                 region TEXT DEFAULT 'global',
                 city TEXT,
-                is_fresher_eligible INTEGER DEFAULT 0,
                 is_read INTEGER DEFAULT 0,
+                is_emailed INTEGER DEFAULT 0,
                 status TEXT DEFAULT 'unread',
                 created_at TEXT NOT NULL,
                 UNIQUE(job_id)
             )
         """)
-        # Ensure status column exists if table was created previously
+        # Ensure status & is_emailed columns exist if table was created previously
         try:
             conn.execute("ALTER TABLE notifications ADD COLUMN status TEXT DEFAULT 'unread'")
+        except sqlite3.OperationalError:
+            pass
+        try:
+            conn.execute("ALTER TABLE notifications ADD COLUMN is_emailed INTEGER DEFAULT 0")
         except sqlite3.OperationalError:
             pass
 
