@@ -37,3 +37,8 @@ Thumbs.db
 # Playwright
 playwright-report/
 test-results/
+
+# Temporary test logs
+test_results.txt
+*.log
+
